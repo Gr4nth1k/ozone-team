@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Honk:MORF@15&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
+  <title>TEAM SANKHE × TEAM CHOUDHARY — Ozone Web3 Ecosystem</title>
+  <style>
+    :root {
+      --bg: #020408;
+      --bg2: #060c14;
+      --surface: #0a1120;
+      --card: #0d1728;
+      --border: rgba(99, 179, 237, 0.12);
+      --border2: rgba(99, 179, 237, 0.06);
+      --accent: #63b3ed;
+      --accent2: #48bb78;
+      --gold: #e9c46a;
+      --text: #e2e8f0;
+      --muted: #4a6480;
+      --muted2: #8baab8;
+      --danger: #fc8181;
+      --team-a: #63b3ed;
+      --team-b: #f6a553;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Mozilla Text', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .made-with {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  color: #8baab8;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  opacity: 0.8;
+  font-family: 'Mozilla Text', sans-serif;
+}
+
+.made-with img {
+  height: 14px;
+  width: auto;
+  filter: brightness(0.9);
+  opacity: 0.9;
+}
+
+.made-with:hover {
+  opacity: 1;
+}
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 179, 237, 0.07) 0%, transparent 60%),
+        linear-gradient(rgba(99, 179, 237, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 179, 237, 0.022) 1px, transparent 1px);
+      background-size: 100% 100%, 80px 80px, 80px 80px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAV ─────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(2, 4, 8, 0.92);
+      backdrop-filter: blur(24px) saturate(160%);
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .img_lead {
+      height: 100px;
+      border-radius: 50%;
+      border: 1px solid white;
+      margin-bottom: 20px;
+    }
+
+    .nav-emblem {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #020408;
+      letter-spacing: -0.03em;
+    }
+
+    /* The key fix: ONE clean combined wordmark */
+    .nav-wordmark {
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      line-height: 1.35;
+      color: var(--text);
+    }
+
+    .nav-wordmark .ta { color: var(--team-a); }
+    .nav-wordmark .tb { color: var(--team-b); }
+    .nav-wordmark .sep { color: var(--muted); margin: 0 4px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-pill {
+      background: rgba(99, 179, 237, 0.09);
+      border: 1px solid rgba(99, 179, 237, 0.28);
+      color: var(--accent) !important;
+      padding: 6px 16px;
+      border-radius: 100px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-pill:hover { background: rgba(99, 179, 237, 0.16) !important; }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border-radius: 10px;
+
+      border: 1px solid white;
+      cursor: pointer;
+      margin-left: auto;
+      padding: 4px;
+    }
+
+    .mob-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(6, 12, 20, 0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      padding: 20px;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .mob-menu.open { display: flex; }
+
+    .mob-menu a {
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      text-decoration: none;
+      padding: 11px 14px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .mob-menu a:hover { background: var(--surface); color: var(--accent); }
+
+    /* ─── PRICE BAR ───────────────────────────── */
+    .price-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .price-bar::before, .price-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .price-bar::before { left: 0; background: linear-gradient(90deg, var(--surface), transparent); }
+    .price-bar::after { right: 0; background: linear-gradient(-90deg, var(--surface), transparent); }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: 0.62rem;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+      z-index: 3;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent2);
+      animation: ldot 1.5s infinite;
+    }
+
+    @keyframes ldot { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+    .ticker-scroll { flex: 1; overflow: hidden; }
+
+    .ticker-track {
+      display: flex;
+      gap: 48px;
+      animation: tickscroll 35s linear infinite;
+      width: max-content;
+    }
+
+    @keyframes tickscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .ti { display: flex; align-items: center; gap: 8px; font-family: 'Stack Sans Notch', sans-serif; font-size: 0.7rem; white-space: nowrap; }
+    .ti-name { color: var(--muted2); letter-spacing: 0.06em; }
+    .ti-val { color: var(--text); }
+    .ti-up { color: var(--accent2); font-size: 0.62rem; }
+
+    /* ─── OZONE WIDGET ────────────────────────── */
+    .oz-widget {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      padding: 36px 20px 0;
+    }
+
+    .oz-card {
+      background: var(--card);
+      border: 1px solid rgba(99, 179, 237, 0.18);
+      border-radius: 16px;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(99, 179, 237, 0.04);
+    }
+
+    .oz-lbl { font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 3px; }
+    .oz-val { font-family: 'Mozilla Text', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--accent); }
+    .oz-inr { font-family: 'Mozilla Text', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); }
+    .oz-sub { font-size: 0.58rem; color: var(--muted); margin-top: 2px; }
+    .oz-div { width: 1px; height: 38px; background: var(--border); }
+
+    /* ─── HERO ────────────────────────────────── */
+    .hero {
+      min-height: calc(100vh - 106px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 20px 60px;
+    }
+
+    /* Dual-color orbs for the two teams */
+    .hero-orb { position: absolute; border-radius: 50%; pointer-events: none; }
+
+    .orb1 {
+      width: 600px;
+      height: 600px;
+      top: 50%;
+      left: 30%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(99, 179, 237, 0.06) 0%, transparent 65%);
+      animation: op1 7s ease-in-out infinite;
+    }
+
+    .orb2 {
+      width: 500px;
+      height: 500px;
+      top: 50%;
+      left: 70%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(246, 165, 83, 0.05) 0%, transparent 65%);
+      animation: op1 9s ease-in-out infinite reverse;
+    }
+
+    @keyframes op1 {
+      0%,100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(99, 179, 237, 0.07);
+      border: 1px solid rgba(99, 179, 237, 0.18);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 36px;
+      animation: fu 0.6s ease both;
+    }
+
+    /* The dual-team hero headline */
+    .hero-dual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 30px;
+      animation: fu 0.65s 0.08s ease both;
+      flex-wrap: wrap;
+    }
+
+    .hero-team {
+      padding: 0 28px;
+      text-align: center;
+    }
+
+    .hero-team-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .hero-team-name {
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.2rem, 7vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-team-name.blue {
+      background: linear-gradient(135deg, #63b3ed, #4299e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-team-name.orange {
+      background: linear-gradient(135deg, #f6a553, #e07832);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 0 16px;
+      flex-shrink: 0;
+    }
+
+    .hero-x {
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--muted);
+      line-height: 1;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.88rem, 2vw, 1rem);
+      color: var(--muted2);
+      line-height: 1.85;
+      max-width: 520px;
+      margin: 0 auto 44px;
+      font-weight: 400;
+      animation: fu 0.65s 0.15s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fu 0.65s 0.22s ease both;
+    }
+
+    .btn-p {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: linear-gradient(135deg, var(--accent), #4299e1);
+      color: #020408;
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      padding: 13px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 0 36px rgba(99, 179, 237, 0.22);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 0 56px rgba(99, 179, 237, 0.38); }
+
+    .btn-g {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: transparent;
+      color: var(--text);
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      padding: 13px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-g:hover { border-color: rgba(99, 179, 237, 0.28); background: rgba(99, 179, 237, 0.05); }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      margin-top: 64px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(13, 23, 40, 0.55);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      animation: fu 0.65s 0.3s ease both;
+      flex-wrap: wrap;
+    }
+
+    .hs { flex: 1; min-width: 120px; padding: 20px 16px; text-align: center; border-right: 1px solid var(--border); }
+    .hs:last-child { border-right: none; }
+    .hs-val { font-family: 'Mozilla Text', sans-serif; font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 700; color: var(--accent); letter-spacing: 0.02em; line-height: 1; }
+    .hs-val.g { color: var(--accent2); }
+    .hs-val.y { color: var(--gold); }
+    .hs-lbl { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.09em; margin-top: 5px; }
+
+    @keyframes fu { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ─── TEAM IDENTITY STRIP ─────────────────── */
+    .team-strip {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--border);
+    }
+
+    .team-half {
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .team-half.left { border-right: 1px solid var(--border); background: rgba(99, 179, 237, 0.025); }
+    .team-half.right { background: rgba(246, 165, 83, 0.025); }
+
+    .team-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .team-dot.blue { background: var(--team-a); box-shadow: 0 0 8px rgba(99, 179, 237, 0.5); }
+    .team-dot.orange { background: var(--team-b); box-shadow: 0 0 8px rgba(246, 165, 83, 0.5); }
+
+    .team-half-name {
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .team-half-desc { font-size: 0.75rem; color: var(--muted2); }
+
+    /* ─── SECTIONS ────────────────────────────── */
+    section { position: relative; z-index: 1; }
+
+    .sec { max-width: 1140px; margin: 0 auto; padding: 96px 20px; }
+
+    .sec-tag {
+      font-size: 0.63rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sec-tag::before { content: ''; display: inline-block; width: 18px; height: 1px; background: var(--accent); }
+
+    .sec-h2 {
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .sec-h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sec-p { font-size: 0.92rem; color: var(--muted2); line-height: 1.85; max-width: 540px; font-weight: 400; }
+
+    /* ─── ABOUT ───────────────────────────────── */
+    .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 52px; align-items: start; }
+    .ab-body { font-size: 0.9rem; color: var(--muted2); line-height: 1.9; margin-bottom: 14px; }
+    .ab-hl { color: var(--accent); font-weight: 600; }
+
+    .ab-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
+    .abt { font-size: 0.67rem; color: var(--accent2); background: rgba(72, 187, 120, 0.07); border: 1px solid rgba(72, 187, 120, 0.18); border-radius: 6px; padding: 4px 11px; letter-spacing: 0.04em; }
+
+    .ab-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .abc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 18px; transition: border-color 0.3s, transform 0.3s; }
+    .abc:hover { border-color: rgba(99, 179, 237, 0.26); transform: translateY(-3px); }
+    .abc-icon { margin-bottom: 12px; }
+    .abc h4 { font-size: 0.86rem; font-weight: 700; margin-bottom: 5px; }
+    .abc p { font-size: 0.77rem; color: var(--muted2); line-height: 1.65; }
+
+    /* ─── INCOME ──────────────────────────────── */
+    .inc-bg { background: var(--bg2); }
+
+    .inc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 44px; }
+
+    .inc-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .inc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; }
+    .inc-card.cb::after { background: var(--accent); }
+    .inc-card.cg::after { background: var(--accent2); }
+    .inc-card.cy::after { background: var(--gold); }
+    .inc-card.cp::after { background: #f687b3; }
+    .inc-card:hover { transform: translateY(-4px); border-color: rgba(99, 179, 237, 0.2); }
+
+    .inc-icon { margin-bottom: 16px; }
+    .inc-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 7px; }
+    .inc-card p { font-size: 0.76rem; color: var(--muted2); line-height: 1.68; }
+    .inc-rate { margin-top: 16px; font-family: 'Stack Sans Notch', sans-serif; font-size: 1rem; font-weight: 700; }
+    .inc-rate.b { color: var(--accent); }
+    .inc-rate.g { color: var(--accent2); }
+    .inc-rate.y { color: var(--gold); }
+    .inc-rate.p { color: #f687b3; }
+    .inc-sub { font-size: 0.68rem; color: var(--muted); margin-top: 4px; }
+
+    /* ─── TABLE ───────────────────────────────── */
+    .tbl-wrap { overflow-x: auto; margin-top: 36px; border-radius: 12px; border: 1px solid var(--border); -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; min-width: 580px; }
+    thead tr { background: rgba(99, 179, 237, 0.04); }
+    th { padding: 13px 18px; font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted2); text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; font-family: 'Stack Sans Notch', sans-serif; }
+    td { padding: 12px 18px; font-size: 0.82rem; border-bottom: 1px solid var(--border2); white-space: nowrap; color: var(--muted2); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(99, 179, 237, 0.025); color: var(--text); }
+
+    .ln { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 5px; background: rgba(99, 179, 237, 0.09); border: 1px solid rgba(99, 179, 237, 0.18); font-family: 'Stack Sans Notch', sans-serif; font-size: 0.72rem; color: var(--accent); }
+    .tg { color: var(--accent2); font-weight: 500; }
+    .ty { color: var(--gold); font-weight: 500; }
+    .tb { color: var(--accent); font-weight: 500; }
+
+    .proj-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+    .pj { background: var(--card); border: 1px solid var(--border); border-radius: 11px; padding: 20px 22px; }
+    .pj-lbl { font-size: 0.66rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+    .pj-val { font-family: 'Stack Sans Notch', sans-serif; font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 700; }
+    .pj-note { font-size: 0.68rem; color: var(--muted); margin-top: 6px; }
+
+    /* ─── CALCULATOR ──────────────────────────── */
+    .calc-bg { background: var(--bg2); }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 44px; align-items: start; }
+
+    .calc-box { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+    .calc-box h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 22px; }
+
+    .cr { margin-bottom: 16px; }
+    .cr label { display: block; font-size: 0.67rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 6px; }
+    .cr input, .cr select { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 13px; color: var(--text); font-family: 'Mozilla Text', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
+    .cr input:focus, .cr select:focus { border-color: rgba(99, 179, 237, 0.36); }
+
+    .calc-btn { width: 100%; background: linear-gradient(135deg, var(--accent), #4299e1); border: none; border-radius: 8px; padding: 12px; font-family: 'Stack Sans Notch', sans-serif; font-size: 0.86rem; font-weight: 700; color: #020408; cursor: pointer; margin-top: 6px; transition: opacity 0.2s; letter-spacing: 0.04em; }
+    .calc-btn:hover { opacity: 0.87; }
+
+    .res-box { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+    .res-box h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 22px; }
+
+    .rr { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--border2); font-size: 0.82rem; }
+    .rr:last-of-type { border-bottom: none; }
+    .rl { color: var(--muted2); }
+    .rv { font-family: 'Mozilla Text', sans-serif; font-weight: 700; color: var(--text); }
+    .rv.big { font-size: 1.1rem; color: var(--accent2); }
+    .rv.y { color: var(--gold); }
+    .res-note { font-size: 0.68rem; color: var(--muted); margin-top: 14px; line-height: 1.65; }
+
+    /* ─── LEADERS ─────────────────────────────── */
+    .ldr-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 44px; }
+
+    .ldr-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 32px 22px; text-align: center; transition: transform 0.3s, border-color 0.3s; }
+    .ldr-card:hover { transform: translateY(-4px); border-color: rgba(99, 179, 237, 0.26); }
+    .ldr-card.ft { border-color: rgba(99, 179, 237, 0.22); }
+
+    .ldr-av { width: 68px; height: 68px; bo rder-radius: 50%; margin: 0 auto 14px; background: linear-gradient(135deg, rgba(99, 179, 237, 0.18), rgba(72, 187, 120, 0.18)); border: 1px solid rgba(99, 179, 237, 0.22); display: flex; align-items: center; justify-content: center; }
+
+    .ldr-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 3px; }
+    .ldr-role { font-size: 0.68rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 8px; }
+    .ldr-city { font-size: 0.76rem; color: var(--muted2); display: flex; align-items: center; justify-content: center; gap: 4px; }
+    .ldr-card.ph { opacity: 0.42; border-style: dashed; }
+
+    /* ─── JOIN ────────────────────────────────── */
+    .join-bg { background: var(--bg2); }
+
+    .pkg-wrap {
+      max-width: 700px;
+      margin: 44px auto 0;
+      background: var(--card);
+      border-radius: 22px;
+      border: 1px solid rgba(99, 179, 237, 0.18);
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 70px rgba(99, 179, 237, 0.05);
+    }
+
+    .pkg-wrap::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--team-a), var(--team-b), transparent); }
+
+    .pkg-lbl { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); text-align: center; margin-bottom: 8px; }
+    .pkg-price { font-family: 'Stack Sans Notch', sans-serif; font-size: clamp(3.5rem, 10vw, 6.5rem); font-weight: 700; text-align: center; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; letter-spacing: -0.03em; }
+    .pkg-sub { text-align: center; color: var(--muted2); font-size: 0.84rem; margin-bottom: 36px; }
+
+    .pkg-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 36px; }
+    .pf { display: flex; align-items: center; gap: 9px; font-size: 0.8rem; color: var(--muted2); }
+    .pfc { flex-shrink: 0; }
+
+    .pkg-btn { display: block; width: 100%; text-align: center; background: linear-gradient(135deg, var(--team-a), var(--team-b)); color: #020408; font-family: 'Stack Sans Notch', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.06em; padding: 15px; border-radius: 11px; text-decoration: none; box-shadow: 0 0 36px rgba(99, 179, 237, 0.18); transition: transform 0.2s, box-shadow 0.2s; }
+    .pkg-btn:hover { transform: translateY(-2px); box-shadow: 0 0 56px rgba(99, 179, 237, 0.32); }
+    .pkg-note { text-align: center; font-size: 0.72rem; color: var(--muted); margin-top: 12px; }
+
+    /* ─── CONTACT ─────────────────────────────── */
+    .ct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; margin-top: 52px; align-items: start; }
+    .ct-item { display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 11px; text-decoration: none; color: var(--text); margin-bottom: 11px; transition: border-color 0.2s, transform 0.2s; }
+    .ct-item:hover { border-color: rgba(99, 179, 237, 0.28); transform: translateX(4px); }
+    .ct-icon { width: 42px; height: 42px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ci-wa { background: rgba(37, 211, 102, 0.09); }
+    .ci-ph { background: rgba(99, 179, 237, 0.09); }
+    .ci-em { background: rgba(233, 196, 106, 0.09); }
+    .ct-lbl { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.09em; }
+    .ct-val { font-size: 0.88rem; font-weight: 600; margin-top: 2px; }
+
+    .eco-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 26px; }
+    .eco-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 7px; }
+    .eco-card p { font-size: 0.8rem; color: var(--muted2); line-height: 1.7; margin-bottom: 18px; }
+    .eco-link { display: flex; align-items: center; gap: 9px; padding: 11px 13px; border-radius: 8px; text-decoration: none; font-size: 0.8rem; margin-bottom: 7px; transition: opacity 0.2s; }
+    .eco-link:hover { opacity: 0.8; }
+    .eco-link.bl { background: rgba(99, 179, 237, 0.06); color: var(--accent); border: 1px solid rgba(99, 179, 237, 0.14); }
+    .eco-link.gn { background: rgba(72, 187, 120, 0.06); color: var(--accent2); border: 1px solid rgba(72, 187, 120, 0.14); }
+
+    /* ─── DISCLAIMER ──────────────────────────── */
+    .disc-s { background: #0a0501; border-top: 1px solid rgba(252, 129, 74, 0.14); }
+    .disc-box { background: rgba(252, 129, 74, 0.04); border: 1px solid rgba(252, 129, 74, 0.16); border-radius: 14px; padding: 36px; margin-top: 36px; }
+    .disc-box h3 { font-family: 'Stack Sans Notch', sans-serif; font-size: 1rem; font-weight: 700; color: #fc814a; margin-bottom: 18px; display: flex; align-items: center; gap: 9px; }
+    .disc-box p { font-size: 0.83rem; color: rgba(210, 160, 130, 0.82); line-height: 1.9; margin-bottom: 14px; }
+    .disc-box p:last-child { margin-bottom: 0; }
+    .disc-box strong { color: #fc814a; font-weight: 600; }
+    .disc-end { color: rgba(252, 129, 74, 0.65) !important; font-size: 0.74rem !important; border-top: 1px solid rgba(252, 129, 74, 0.1); padding-top: 14px; margin-top: 0 !important; }
+
+    /* ─── FOOTER ──────────────────────────────── */
+    footer { background: #010204; border-top: 1px solid var(--border); padding: 44px 20px 32px; text-align: center; }
+
+    .ft-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .ft-logo .ta { color: var(--team-a); }
+    .ft-logo .tb { color: var(--team-b); }
+    .ft-logo .sep { color: var(--muted); }
+
+    .ft-sub { font-size: 0.74rem; color: var(--muted); margin-bottom: 24px; }
+    .ft-links { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-bottom: 24px; }
+    .ft-links a { font-size: 0.72rem; color: var(--muted); text-decoration: none; transition: color 0.2s; letter-spacing: 0.05em; text-transform: uppercase; }
+    .ft-links a:hover { color: var(--accent); }
+    .ft-copy { font-size: 0.68rem; color: var(--muted); line-height: 1.8; opacity: 0.45; }
+
+    /* ─── VALIDATORS ─────────────────────────── */
+    .val-bg { background: var(--bg2); }
+
+    .val-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .val-live {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(72, 187, 120, 0.07);
+      border: 1px solid rgba(72, 187, 120, 0.18);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-family: 'Mozilla Text', sans-serif;
+      font-size: 0.64rem;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .val-live-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent2);
+      animation: ldot 1.5s infinite;
+    }
+
+    .val-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .val-stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-align: center;
+    }
+
+    .val-stat-val {
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .val-stat-val.g { color: var(--accent2); }
+    .val-stat-val.y { color: var(--gold); }
+
+    .val-stat-lbl {
+      font-size: 0.62rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: 'Mozilla Text', sans-serif;
+    }
+
+    .val-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .val-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .val-card:hover {
+      border-color: rgba(99, 179, 237, 0.26);
+      transform: translateY(-3px);
+    }
+
+    .val-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .val-card:hover::before { opacity: 1; }
+
+    .val-rank {
+      position: absolute;
+      top: 14px; right: 14px;
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .val-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(99, 179, 237, 0.12), rgba(72, 187, 120, 0.12));
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .val-moniker {
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 36px;
+    }
+
+    .val-addr {
+      font-family: 'Mozilla Text', sans-serif;
+      font-size: 0.6rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: 0.03em;
+    }
+
+    .val-divider {
+      width: 100%; height: 1px;
+      background: var(--border2);
+      margin: 10px 0;
+    }
+
+    .val-meta {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .val-grid {
+  scroll-snap-type: x mandatory;
+}
+
+.val-card {
+  scroll-snap-align: start;
+}
+
+    .val-chip {
+      font-family: 'Mozilla Text', sans-serif;
+      font-size: 0.62rem;
+      padding: 3px 8px;
+      border-radius: 5px;
+      border: 1px solid;
+      letter-spacing: 0.03em;
+    }
+
+    .val-chip.bonded { color: var(--accent2); background: rgba(72,187,120,0.07); border-color: rgba(72,187,120,0.18); }
+    .val-chip.tokens { color: var(--accent); background: rgba(99,179,237,0.07); border-color: rgba(99,179,237,0.14); }
+    .val-chip.commission { color: var(--gold); background: rgba(233,196,106,0.07); border-color: rgba(233,196,106,0.14); }
+
+    .val-tokens-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 8px;
+    }
+
+    .val-tokens-lbl {
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: 'Mozilla Text', sans-serif;
+    }
+
+    .val-tokens-val {
+      font-family: 'Stack Sans Notch', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .val-loading {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted2);
+      font-size: 0.84rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      font-family: 'Mozilla Text', sans-serif;
+    }
+
+    .val-spinner {
+      width: 32px; height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .val-error {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--danger);
+      font-size: 0.84rem;
+      background: rgba(252, 129, 129, 0.04);
+      border: 1px solid rgba(252, 129, 129, 0.14);
+      border-radius: 12px;
+      font-family: 'Mozilla Text', sans-serif;
+    }
+
+    /* ─── REVEAL ──────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ──────────────────────────── */
+    @media(max-width:1000px) {
+      .inc-grid { grid-template-columns: repeat(2, 1fr); }
+      .ldr-grid { grid-template-columns: repeat(2, 1fr); }
+      .val-grid { grid-template-columns: repeat(2, 1fr); }
+      .val-stats-row { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media(max-width:820px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .about-wrap { grid-template-columns: 1fr; gap: 32px; }
+      .ab-cards { grid-template-columns: 1fr 1fr; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .ct-grid { grid-template-columns: 1fr; }
+      .proj-row { grid-template-columns: 1fr; }
+      .team-strip { grid-template-columns: 1fr; }
+      .team-half.left { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    @media(max-width:600px) {
+      .hero-dual { flex-direction: column; gap: 0; }
+      .hero-divider { flex-direction: row; padding: 8px 0; }
+      .hero-x { font-size: 1.8rem; }
+      .hero-team { padding: 12px 0; }
+    }
+
+    @media(max-width:540px) {
+      .inc-grid { grid-template-columns: 1fr; }
+      .ldr-grid { grid-template-columns: 1fr 1fr; }
+      .ab-cards { grid-template-columns: 1fr; }
+      .pkg-wrap { padding: 30px 20px; }
+      .pkg-feats { grid-template-columns: 1fr; }
+      .oz-div { display: none; }
+      .hs { min-width: 100px; padding: 16px 10px; }
+      .disc-box { padding: 24px 18px; }
+      .hero-stats { flex-wrap: wrap; }
+
+
+  .val-grid {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 12px;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+  }
+
+  .val-card {
+    min-width: 240px;
+    max-width: 240px;
+    flex-shrink: 0;
+  }
+
+  .val-loading,
+  .val-error {
+    min-width: 100%;
+  }
+
+  /* optional scrollbar styling */
+  .val-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .val-grid::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+  }
+
+      .val-stats-row { grid-template-columns: 1fr; }
+    }
+
+    @media(max-width:380px) { .ldr-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#home">
+      <div class="nav-emblem"><img style="height: 30px;" src="https://nftwall.io/assets/logo-BfkcyVYM.png" alt=""></div>
+      <!-- FIXED: Single unified wordmark, no double-stacking -->
+      <div class="nav-wordmark">
+        <span class="ta">SANKHE</span>
+        <span class="sep">×</span>
+        <span class="tb">CHOUDHARY</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#income">Income</a></li>
+      <li><a href="#business">Business Plan</a></li>
+      <li><a href="#validators">Validators</a></li>
+      <li><a href="#leaders">Leaders</a></li>
+      <li><a href="#join">Join</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#disclaimer" class="nav-pill">Disclaimer</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect x="2" y="5.5" width="18" height="1.4" rx="0.7" fill="#8baab8"/>
+        <rect x="2" y="10.3" width="18" height="1.4" rx="0.7" fill="#8baab8"/>
+        <rect x="2" y="15.1" width="18" height="1.4" rx="0.7" fill="#8baab8"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mob-menu" id="mobMenu">
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#income" onclick="closeMenu()">Income Streams</a>
+    <a href="#business" onclick="closeMenu()">Business Plan</a>
+    <a href="#validators" onclick="closeMenu()">Validators</a>
+    <a href="#leaders" onclick="closeMenu()">Leaders</a>
+    <a href="#join" onclick="closeMenu()">Join Us</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="#disclaimer" onclick="closeMenu()">Disclaimer</a>
+  </div>
+
+  <!-- PRICE TICKER -->
+  <div class="price-bar">
+    <div class="live-badge"><div class="live-dot"></div>Live</div>
+    <div class="ticker-scroll">
+      <div class="ticker-track">
+        <span class="ti"><span class="ti-name">OZONE</span><span class="ti-val" id="t-oz1">--</span><span class="ti-up" id="t-ozinr1">--</span></span>
+<span class="ti"><span class="ti-name">BTC</span><span class="ti-val" id="btc-inr">--</span><span class="ti-up" id="btc-ch">--</span></span>
+<span class="ti"><span class="ti-name">ETH</span><span class="ti-val" id="eth-inr">--</span><span class="ti-up" id="eth-ch">--</span></span>
+<span class="ti"><span class="ti-name">BNB</span><span class="ti-val" id="bnb-inr">--</span><span class="ti-up" id="bnb-ch">--</span></span>
+<span class="ti"><span class="ti-name">SOL</span><span class="ti-val" id="sol-inr">--</span><span class="ti-up" id="sol-ch">--</span></span>
+        <span class="ti"><span class="ti-name">1 NFT</span><span class="ti-val">$25</span></span>
+        <span class="ti"><span class="ti-name">JOINING</span><span class="ti-val">2 NFT / $50</span></span>
+        <span class="ti"><span class="ti-name">DAILY YIELD</span><span class="ti-val ti-up">+0.35%</span></span>
+
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- OZONE LIVE WIDGET -->
+  <div class="oz-widget" id="home">
+    <div class="oz-card reveal">
+      <div class="oz-item">
+        <div class="oz-lbl">Ozone / USD</div>
+        <div class="oz-val" id="w-usd">Fetching...</div>
+        <div class="oz-sub" id="w-time">--</div>
+      </div>
+      <div class="oz-div"></div>
+      <div class="oz-item">
+        <div class="oz-lbl">Ozone / INR</div>
+        <div class="oz-inr" id="w-inr">--</div>
+        <div class="oz-sub" id="w-fx">1 USD = -- INR</div>
+      </div>
+      <div class="oz-div"></div>
+      <div class="oz-item">
+        <div class="oz-lbl">Total Return</div>
+        <div class="oz-val" style="color:var(--accent2);">210%</div>
+        <div class="oz-sub">Over 600 Days</div>
+      </div>
+      <div class="oz-div"></div>
+      <div class="oz-item">
+        <div class="oz-lbl">Daily Yield</div>
+        <div class="oz-val" style="color:var(--gold);">0.35%</div>
+        <div class="oz-sub">Ozone Staking</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section>
+    <div class="hero">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="hero-content">
+        <div class="hero-tag">
+          <svg width="7" height="7" viewBox="0 0 7 7"><circle cx="3.5" cy="3.5" r="3.5" fill="#48bb78"/></svg>
+          Ozone Web3 Ecosystem — India
+        </div>
+
+        <!-- FIXED: Clean dual-team hero headline -->
+        <div class="hero-dual">
+          <div class="hero-team">
+            <span class="hero-team-label">Team</span>
+            <div class="hero-team-name blue">SANKHE</div>
+          </div>
+          <div class="hero-divider">
+            <span class="hero-x">×</span>
+          </div>
+          <div class="hero-team">
+            <span class="hero-team-label">Team</span>
+            <div class="hero-team-name orange">CHOUDHARY</div>
+          </div>
+        </div>
+
+        <p class="hero-sub">Building wealth through decentralized Web3 infrastructure ecosystem. Your trusted entry into the Ozone Blockchain — a 100% public, permissionless network with 25+ upcoming projects.</p>
+        <div class="hero-btns">
+          <a href="#join" class="btn-p">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M13 5l7 7-7 7M5 12h15" stroke="#020408" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Join Our Team
+          </a>
+          <a href="#business" class="btn-g">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#8baab8" stroke-width="1.5"/><path d="M3 9h18M9 21V9" stroke="#8baab8" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Business Plan
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hs"><div class="hs-val">50M</div><div class="hs-lbl">Max Ozone Supply</div></div>
+          <div class="hs"><div class="hs-val g">210%</div><div class="hs-lbl">Total Return</div></div>
+          <div class="hs"><div class="hs-val">25+</div><div class="hs-lbl">Projects</div></div>
+          <div class="hs"><div class="hs-val y">$25</div><div class="hs-lbl">Per NFT</div></div>
+          <div class="hs"><div class="hs-val">600</div><div class="hs-lbl">Day Duration</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM IDENTITY STRIP — shows both teams as one unified alliance -->
+  <div class="team-strip reveal">
+    <div class="team-half left">
+      <div class="team-dot blue"></div>
+      <div>
+        <div class="team-half-name" style="color:var(--team-a);">TEAM SANKHE</div>
+        <div class="team-half-desc">Ozone Community — India</div>
+      </div>
+    </div>
+    <div class="team-half right">
+      <div class="team-dot orange"></div>
+      <div>
+        <div class="team-half-name" style="color:var(--team-b);">TEAM CHOUDHARY</div>
+        <div class="team-half-desc">Ozone Community — India</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec">
+      <div class="sec-tag">Who We Are</div>
+      <h2 class="sec-h2">About <em>Team Sankhe × Choudhary</em></h2>
+      <div class="about-wrap reveal">
+        <div>
+          <p class="ab-body">Team Sankhe and Team Choudhary are two allied communities united under the <span class="ab-hl">Ozone Blockchain ecosystem</span> — a 100% decentralized public blockchain built on the same principles as Bitcoin, purpose-built for the Web3 economy.</p>
+          <p class="ab-body">Together, we guide people across India through an education-first approach to digital asset participation — transparently, ethically, and with continuous mentorship from experienced leaders.</p>
+          <p class="ab-body">Ozone Chain hosts <span class="ab-hl">25+ upcoming projects</span> including NFT Wall (Live), PromoZone, AI Robot, MetaPredict, Meta Tube, Cloud Connect, OSPIN Game, Meta LUDO, OZONE Pay, and Battle11 — building a complete on-chain economy with real use cases.</p>
+          <div class="ab-tags">
+            <span class="abt">Ozone Partner</span>
+            <span class="abt">CerTiK Audited</span>
+            <span class="abt">1,000,000 TPS Network</span>
+            <span class="abt">Public Blockchain</span>
+            <span class="abt">Allied Teams</span>
+          </div>
+        </div>
+        <div class="ab-cards">
+          <div class="abc">
+            <div class="abc-icon"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="8" fill="rgba(99,179,237,0.09)"/><path d="M7 15a8 8 0 1016 0 8 8 0 00-16 0z" stroke="#63b3ed" stroke-width="1.4"/><path d="M15 10.5v4.5l3 2" stroke="#63b3ed" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <h4>Public Blockchain</h4>
+            <p>Fully decentralized — 100% transparent and permissionless, like Bitcoin.</p>
+          </div>
+          <div class="abc">
+            <div class="abc-icon"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="8" fill="rgba(72,187,120,0.09)"/><rect x="7" y="10" width="16" height="11" rx="3" stroke="#48bb78" stroke-width="1.4"/><path d="M11 10V8a4 4 0 018 0v2" stroke="#48bb78" stroke-width="1.4" stroke-linecap="round"/><circle cx="15" cy="15.5" r="1.4" fill="#48bb78"/></svg></div>
+            <h4>NFT Ecosystem</h4>
+            <p>NFT Wall — Proof of Mint powering your on-chain earning potential.</p>
+          </div>
+          <div class="abc">
+            <div class="abc-icon"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="8" fill="rgba(233,196,106,0.09)"/><path d="M15 7l2.5 5.5 6 .5-4.5 4 1.5 5.5L15 19.5l-5.5 3 1.5-5.5-4.5-4 6-.5z" stroke="#e9c46a" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+            <h4>15-Level Plan</h4>
+            <p>Earn yield income from 6% at Level 1 down to 0.75% at Level 15.</p>
+          </div>
+          <div class="abc">
+            <div class="abc-icon"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="8" fill="rgba(246,135,179,0.09)"/><circle cx="15" cy="15" r="6" stroke="#f687b3" stroke-width="1.4"/><path d="M15 9v-2M15 23v-2M21 15h2M7 15H5" stroke="#f687b3" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <h4>Web3 Supply Chain</h4>
+            <p>PromoZone — the first Web3 supply chain built entirely on blockchain.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCOME -->
+  <section id="income" class="inc-bg">
+    <div class="sec">
+      <div class="sec-tag">Revenue Streams</div>
+      <h2 class="sec-h2">Ways to <em>Earn</em></h2>
+      <p class="sec-p">Multiple concurrent income mechanisms, all governed by on-chain smart contracts with no intermediaries.</p>
+      <div class="inc-grid reveal">
+        <div class="inc-card cb">
+          <div class="inc-icon"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="9" fill="rgba(99,179,237,0.09)"/><path d="M10 24V18m5 6V13m5 11V16m4 8v-5" stroke="#63b3ed" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <h3>Self Staking (Ozone)</h3>
+          <p>Stake Ozone tokens and receive daily passive income distributed by the network protocol.</p>
+          <div class="inc-rate b">0.35% / Day</div>
+          <div class="inc-sub">210% total over 600 days. Min withdraw: 1 Ozone</div>
+        </div>
+        <div class="inc-card cy">
+          <div class="inc-icon"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="9" fill="rgba(233,196,106,0.09)"/><circle cx="17" cy="13" r="4" stroke="#e9c46a" stroke-width="1.6"/><circle cx="10" cy="24" r="3" stroke="#e9c46a" stroke-width="1.4"/><circle cx="24" cy="24" r="3" stroke="#e9c46a" stroke-width="1.4"/><path d="M13 22.5l1.5-3.5M22 19l1.5 3.5" stroke="#e9c46a" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <h3>Yield Income (Network)</h3>
+          <p>Earn from your team's NFT business volume across 15 levels of network depth.</p>
+          <div class="inc-rate y">L1–L5: 5% | L6–L15: 2.5%</div>
+          <div class="inc-sub">Unlock all levels with 7 direct referrals + Star ranks.</div>
+        </div>
+        <div class="inc-card cp">
+          <div class="inc-icon"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="9" fill="rgba(246,135,179,0.09)"/><path d="M17 9l2.5 5.5 6 .5-4.5 4 1.5 5.5L17 21.5l-5.5 3 1.5-5.5-4.5-4 6-.5z" stroke="#f687b3" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <h3>Royalty / Rank Rewards</h3>
+          <p>Advance through 7 Star Ranks for foreign tours, 6% royalty pools, and lifetime 3% at 7 Star.</p>
+          <div class="inc-rate p">1 STAR — 7 STAR</div>
+          <div class="inc-sub">Royalty paid over 45 or 90 days based on rank achieved.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS PLAN -->
+  <section id="business">
+    <div class="sec">
+      <div class="sec-tag">Compensation Structure</div>
+      <h2 class="sec-h2">The Law of <em>Duplication</em></h2>
+      <p class="sec-p">Each ID costs $50 (2 NFTs). A 7-way duplication model compounds your network geometrically across 15 levels. All prices are market-dependent.</p>
+      <div class="tbl-wrap reveal">
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Joining IDs</th>
+              <th>Total Value (USD)</th>
+              <th>NFTs Generated</th>
+              <th>Benefit (USD)</th>
+              <th>Benefit (INR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="ln">1</span></td><td>7</td><td class="tb">$350</td><td>14</td><td>$21</td><td class="tg">&#8377;1,890</td></tr>
+            <tr><td><span class="ln">2</span></td><td>49</td><td class="tb">$2,450</td><td>205</td><td>$153</td><td class="tg">&#8377;13,770</td></tr>
+            <tr><td><span class="ln">3</span></td><td>343</td><td class="tb">$17,150</td><td>1,041</td><td>$390</td><td class="tg">&#8377;35,100</td></tr>
+            <tr><td><span class="ln">4</span></td><td>2,401</td><td class="tb">$1,20,050</td><td>5,208</td><td>$1,953</td><td class="tg">&#8377;1,75,770</td></tr>
+            <tr><td><span class="ln">5</span></td><td>16,807</td><td class="tb">$8,40,350</td><td>26,041</td><td>$9,765</td><td class="tg">&#8377;8,78,850</td></tr>
+            <tr><td><span class="ln">6</span></td><td>1,17,649</td><td class="tb">$58,82,450</td><td>1,30,208</td><td>$24,414</td><td class="tg">&#8377;21,97,260</td></tr>
+            <tr><td><span class="ln">7</span></td><td>8,23,543</td><td class="tb">$4.1 Cr</td><td>6,51,041</td><td>$1,22,070</td><td class="tg">&#8377;1.09 Cr</td></tr>
+            <tr><td><span class="ln">8</span></td><td>57,64,801</td><td class="tb">$28.8 Cr</td><td>32,55,208</td><td>$6,10,351</td><td class="tg">&#8377;5.49 Cr</td></tr>
+            <tr><td><span class="ln">9</span></td><td>4.03 Cr</td><td class="tb">$201 Cr</td><td>1.62 Cr</td><td>$30,51,757</td><td class="tg">&#8377;27.46 Cr</td></tr>
+            <tr><td><span class="ln">10</span></td><td>28.24 Cr</td><td class="ty">$1,412 Cr</td><td>8.13 Cr</td><td class="ty">$1.52 Cr</td><td class="ty">&#8377;137.32 Cr</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="proj-row reveal">
+        <div class="pj">
+          <div class="pj-lbl">Projected Earnings at 5% Efficiency</div>
+          <div class="pj-val tg">&#8377;6,86,64,550</div>
+          <div class="pj-note">Mathematical projection — not guaranteed</div>
+        </div>
+        <div class="pj">
+          <div class="pj-lbl">Projected Earnings at 1% Efficiency</div>
+          <div class="pj-val ty">&#8377;1,37,32,910</div>
+          <div class="pj-note">Actual results depend on market and effort</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section id="calculator" class="calc-bg">
+    <div class="sec">
+      <div class="sec-tag">Interactive Tool</div>
+      <h2 class="sec-h2">Ozone Staking <em>Calculator</em></h2>
+      <p class="sec-p">Estimate potential returns using the live Ozone price and current USD/INR exchange rate. For reference only — not financial advice.</p>
+      <div class="calc-grid reveal">
+        <div class="calc-box">
+          <h3>Input Parameters</h3>
+          <div class="cr"><label>Ozone Tokens to Stake (Min. 20 OZONE)</label><input type="number" id="iOzone" placeholder="e.g. 300" min="1"/></div>
+          <div class="cr">
+            <label>Staking Duration</label>
+            <select id="iDays">
+              <option value="600" selected>600 Days</option>
+            </select>
+          </div>
+          <div class="cr"><label>Current Ozone Price (USD) — LIVE</label><input type="text" id="iPrice" placeholder="Fetching..." readonly/></div>
+          <div class="cr"><label>USD / INR Rate — LIVE</label><input type="text" id="iFX" placeholder="Fetching..." readonly/></div>
+          <button class="calc-btn" onclick="calculate()">Calculate Returns</button>
+        </div>
+        <div class="res-box">
+          <h3>Projected Returns</h3>
+          <div class="rr"><span class="rl">Daily Ozone Earned</span><span class="rv" id="r-d">—</span></div>
+          <div class="rr"><span class="rl">Total Ozone Earned</span><span class="rv" id="r-o">—</span></div>
+          <div class="rr"><span class="rl">Total Value (USD)</span><span class="rv" id="r-u">—</span></div>
+          <div class="rr"><span class="rl">Total Value (INR)</span><span class="rv big" id="r-i">—</span></div>
+          <div class="rr"><span class="rl">Duration</span><span class="rv" id="r-dy">—</span></div>
+          <div class="rr"><span class="rl">Daily Yield Rate</span><span class="rv y">0.35%</span></div>
+          <p class="res-note">Projections assume a constant Ozone price. Actual returns vary with market conditions. This tool is for informational purposes only and does not constitute financial advice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALIDATORS -->
+  <section id="validators" class="val-bg">
+    <div class="sec">
+      <div class="sec-tag">Network Infrastructure</div>
+      <h2 class="sec-h2">Active <em>Validator Nodes</em></h2>
+      <p class="sec-p">Live bonded validators securing the Ozone blockchain network. Data fetched in real-time from the Ozone cosmos API.</p>
+
+      <div class="val-header" style="margin-top:36px;">
+        <div class="val-live">
+          <div class="val-live-dot"></div>
+          Live from Ozone Network
+        </div>
+        <button onclick="loadValidators()" style="background:rgba(99,179,237,0.09);border:1px solid rgba(99,179,237,0.22);color:var(--accent);font-family:'Mozilla Text',sans-serif;font-size:0.72rem;padding:7px 16px;border-radius:8px;cursor:pointer;letter-spacing:0.06em;transition:background 0.2s;" onmouseover="this.style.background='rgba(99,179,237,0.16)'" onmouseout="this.style.background='rgba(99,179,237,0.09)'">
+          ↻ Refresh
+        </button>
+      </div>
+
+      <div class="val-stats-row reveal" id="val-stats">
+        <div class="val-stat">
+          <div class="val-stat-val" id="vs-count">—</div>
+          <div class="val-stat-lbl">Active Validators</div>
+        </div>
+        <div class="val-stat">
+          <div class="val-stat-val g" id="vs-tokens">—</div>
+          <div class="val-stat-lbl">Total Staked (OZONE)</div>
+        </div>
+        <div class="val-stat">
+          <div class="val-stat-val y" id="vs-commission">10%</div>
+          <div class="val-stat-lbl">Avg Commission Rate</div>
+        </div><button onclick="toggleValidators()" id="valToggleBtn"
+  style="background:rgba(99,179,237,0.09);border:1px solid rgba(99,179,237,0.22);color:var(--accent);font-family:'Mozilla Text',sans-serif;font-size:0.72rem;padding:7px 16px;border-radius:8px;cursor:pointer;letter-spacing:0.06em;margin-left:8px;">
+  Hide List
+</button>
+        <p style="font-size:0.7rem; display: flex; align-items: center; color:var(--muted); margin-top:10px;">
+  ← Swipe to explore validators →
+</p>
+      </div>
+
+      <div class="val-grid reveal" id="val-grid">
+        <div class="val-loading">
+          <div class="val-spinner"></div>
+          Fetching live validator data...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERS -->
+  <section id="leaders">
+    <div class="sec">
+      <div class="sec-tag">The Team</div>
+      <h2 class="sec-h2">Our <em>Top Leaders</em></h2>
+      <p class="sec-p">The backbone of Team Sankhe × Choudhary — dedicated individuals guiding you through every step of your Web3 journey.</p>
+      <div class="ldr-grid reveal">
+        <div class="ldr-card ft">
+          <img class="img_lead" src="leader_1.png" alt="">
+          <div class="ldr-name">emmanuel Dzeko</div>
+          <div class="ldr-role">Founder & CEO</div>
+          <div class="ldr-city"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="#4a6480"/></svg>South Africa</div>
+        </div>
+          <div class="ldr-card ft">
+          <img class="img_lead" src="leader_2.png" alt="">
+          <div class="ldr-name">Mr. Ganesh Sankhe</div>
+          <div class="ldr-role">Top Leader</div>
+          <div class="ldr-city"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="#4a6480"/></svg>India</div>
+        </div>  <div class="ldr-card ft">
+          <img class="img_lead" src="leader_3.png" alt="">
+          <div class="ldr-name">Mr. Anil Choudhary</div>
+          <div class="ldr-role">Crypto Guru</div>
+          <div class="ldr-city"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="#4a6480"/></svg>India</div>
+        </div>  <div class="ldr-card ft">
+          <img class="img_lead" src="leader_4.png" alt="">
+          <div class="ldr-name">Mr. Sachin Patil</div>
+          <div class="ldr-role">Team Developer</div>
+          <div class="ldr-city"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="#4a6480"/></svg>India</div>
+        </div>     <div class="ldr-card ft">
+          <img class="img_lead" src="leader_5.png" alt="">
+          <div class="ldr-name">Mr. Shan</div>
+          <div class="ldr-role">Top Promoter</div>
+          <div class="ldr-city"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="#4a6480"/></svg>India</div>
+        </div>
+                 <div class="ldr-card ft">
+          <img class="img_lead" src="leader_6.png" alt="">
+          <div class="ldr-name">Mr. Amol Tandel</div>
+          <div class="ldr-role">Educator</div>
+          <div class="ldr-city"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="#4a6480"/></svg>India</div>
+        </div></div> <br>
+        <p>And Many More...</p>
+      </div></div>
+
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join" class="join-bg">
+    <div class="sec">
+      <div class="sec-tag" style="justify-content:center;">Get Started</div>
+      <h2 class="sec-h2" style="text-align:center;">Join the <em>Alliance</em></h2>
+      <p class="sec-p" style="margin:0 auto;text-align:center;">Start your Web3 journey with just $50 — two NFTs, one active member ID.</p>
+      <div class="pkg-wrap reveal">
+        <div class="pkg-lbl">Joining Package</div>
+        <div class="pkg-price">$50</div>
+        <div class="pkg-sub">= 2 NFTs = 1 Active Member ID &nbsp;|&nbsp; 1 NFT = $25</div>
+        <div class="pkg-feats">
+          <div class="pf"><svg class="pfc" width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#48bb78" stroke-width="1.1"/><path d="M4.5 7.5l2 2 4-4" stroke="#48bb78" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>15-Level Yield Income</div>
+          <div class="pf"><svg class="pfc" width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#48bb78" stroke-width="1.1"/><path d="M4.5 7.5l2 2 4-4" stroke="#48bb78" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Daily Ozone Staking</div>
+          <div class="pf"><svg class="pfc" width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#48bb78" stroke-width="1.1"/><path d="M4.5 7.5l2 2 4-4" stroke="#48bb78" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>NFT Quarterly Income</div>
+          <div class="pf"><svg class="pfc" width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#48bb78" stroke-width="1.1"/><path d="M4.5 7.5l2 2 4-4" stroke="#48bb78" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Star Rank Royalty</div>
+          <div class="pf"><svg class="pfc" width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#48bb78" stroke-width="1.1"/><path d="M4.5 7.5l2 2 4-4" stroke="#48bb78" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Access to 25+ Projects</div>
+          <div class="pf"><svg class="pfc" width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#48bb78" stroke-width="1.1"/><path d="M4.5 7.5l2 2 4-4" stroke="#48bb78" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Gas Fees + Use Cases</div>
+          <div class="pf"><svg class="pfc" width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#48bb78" stroke-width="1.1"/><path d="M4.5 7.5l2 2 4-4" stroke="#48bb78" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Node Profit Access</div>
+          <div class="pf"><svg class="pfc" width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#48bb78" stroke-width="1.1"/><path d="M4.5 7.5l2 2 4-4" stroke="#48bb78" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>PromoZone and NFT Wall</div>
+        </div>
+        <a href="https://wa.me/917020024682" class="pkg-btn">Connect with Our Team to Join</a>
+        <p class="pkg-note">Contact us via WhatsApp or phone to receive your referral link and full onboarding support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="sec">
+      <div class="sec-tag">Get In Touch</div>
+      <h2 class="sec-h2">Contact <em>Us</em></h2>
+      <p class="sec-p">Ready to join or have questions? Our team is available to guide you through every step of the process.</p>
+      <div class="ct-grid reveal">
+        <div>
+          <a href="https://wa.me/917020024682" class="ct-item">
+            <div class="ct-icon ci-wa"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.23-3.48-8.52zM12 21.93a9.92 9.92 0 01-5.06-1.38l-.36-.21-3.74.98 1-3.64-.23-.38A9.94 9.94 0 012.07 12C2.07 6.48 6.48 2.07 12 2.07c2.67 0 5.17 1.04 7.05 2.93A9.94 9.94 0 0121.93 12c0 5.52-4.41 9.93-9.93 9.93zm5.45-7.44c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#25d366"/></svg></div>
+            <div><div class="ct-lbl">WhatsApp</div><div class="ct-val">+91 70200 24682</div></div>
+          </a>
+          <a href="tel:+917020024682" class="ct-item">
+            <div class="ct-icon ci-ph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#63b3ed"/></svg></div>
+            <div><div class="ct-lbl">Phone</div><div class="ct-val">+91 70200 24682</div></div>
+          </a>
+          <a href="mailto:gr4nth1k@gmail.com" class="ct-item">
+            <div class="ct-icon ci-em"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="#e9c46a" stroke-width="1.4"/><path d="M2 7l10 7 10-7" stroke="#e9c46a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><div class="ct-lbl">Email</div><div class="ct-val">gr4nth1k@gmail.com</div></div>
+          </a>
+        </div>
+        <div class="eco-card">
+          <h3>Explore the Ecosystem</h3>
+          <p>Verify all on-chain activity independently using the official Ozone blockchain explorer and NFT Wall platform.</p>
+          <a href="https://www.ozonescan.com" target="_blank" class="eco-link bl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="#63b3ed" stroke-width="1.4"/><path d="M21 21l-4-4" stroke="#63b3ed" stroke-width="1.4" stroke-linecap="round"/></svg>ozonescan.com — Blockchain Explorer</a>
+          <a href="https://www.nftwall.io" target="_blank" class="eco-link gn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#48bb78" stroke-width="1.4"/><path d="M3 9h18M9 21V9" stroke="#48bb78" stroke-width="1.4" stroke-linecap="round"/></svg>nftwall.io — Staking Platform</a>
+          <div style="margin-top:18px;padding-top:18px;border-top:1px solid var(--border);">
+            <div style="font-size:0.64rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Security Audit</div>
+            <div style="font-size:0.8rem;color:var(--muted2);">Protocol audited by CerTiK — one of the leading blockchain security firms globally.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section id="disclaimer" class="disc-s">
+    <div class="sec">
+      <div class="sec-tag" style="color:#fc814a;">Legal Notice</div>
+      <h2 class="sec-h2" style="color:#e07050;">Risk <em style="-webkit-text-fill-color:#fc814a;color:#fc814a;background:none;">Disclosure</em></h2>
+      <div class="disc-box reveal">
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#fc814a" stroke-width="1.5" stroke-linejoin="round"/><line x1="12" y1="9" x2="12" y2="13" stroke="#fc814a" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="17" r="0.8" fill="#fc814a"/></svg>
+          Not Financial Advice
+        </h3>
+        <p><strong>Team Sankhe × Team Choudhary is not a registered financial advisor, investment advisor, or SEBI-registered entity.</strong> The information on this website is for educational and informational purposes only and does not constitute financial, investment, legal, or tax advice of any kind.</p>
+        <p><strong>Cryptocurrency, NFT, and blockchain investments are highly speculative and volatile.</strong> The value of digital assets can increase or decrease dramatically in a short period. You may lose part or all of your invested capital. Never invest money you cannot afford to lose.</p>
+        <p><strong>Past performance is not indicative of future results.</strong> Income figures, projections, and charts shown are mathematical illustrations based on theoretical assumptions. Actual earnings will vary significantly based on market conditions, individual effort, team performance, and other external factors.</p>
+        <p><strong>All prices are dependent on market volatility.</strong> INR values shown are approximations based on exchange rates at the time of calculation and may not reflect current market prices. The live Ozone price widget uses the official Ozone API and a live USD/INR exchange rate for reference only.</p>
+        <p><strong>Do Your Own Research (DYOR).</strong> Before participating in any network marketing, cryptocurrency, or NFT program, consult a qualified financial professional, conduct independent research, and fully understand the risks involved.</p>
+        <p><strong>Network Marketing Disclosure:</strong> Team Sankhe × Team Choudhary promotes the Ozone blockchain ecosystem through a multi-level referral structure. Income from network marketing programs is uncertain and not guaranteed. Results differ based on individual activity and market conditions.</p>
+        <p class="disc-end">By using this website, you acknowledge that you have read, understood, and agree to this disclaimer. Team Sankhe × Team Choudhary and its members shall not be held liable for any financial losses or decisions made based on information presented here. This is an independent community page and is not the official Ozone Chain website.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <!-- FIXED: Single clean unified footer logo -->
+    <div class="ft-logo">
+      <span class="ta">TEAM SANKHE</span>
+      <span class="sep">×</span>
+      <span class="tb">TEAM CHOUDHARY</span>
+    </div>
+    <div class="ft-sub">Ozone Web3 Ecosystem &nbsp;|&nbsp; India</div>
+    <div class="ft-links">
+      <a href="#about">About</a>
+      <a href="#income">Income</a>
+      <a href="#business">Business Plan</a>
+      <a href="#leaders">Leaders</a>
+      <a href="#join">Join</a>
+      <a href="#contact">Contact</a>
+      <a href="#disclaimer">Disclaimer</a>
+      <a href="https://www.ozonescan.com" target="_blank">OzoneScan</a>
+      <a href="https://www.nftwall.io" target="_blank">NFT Wall</a>
+    </div>
+    <!-- FOOTER CREDIT -->
+<div class="made-with">
+  <span>Made with</span>
+  <svg xmlns="http://www.w3.org/2000/svg" width="100" viewBox="0 0 1024.2 115"><defs><style>.a{fill:red;}</style></defs><path class="a" d="M250.649,23.3494h37.328V113.094h23.825V23.3494H349.13V1.9061H250.649Z"/><path class="a" d="M208.557,79.7376,158.522,1.9061H131.519V113.094h23.032V35.2624l50.035,77.8316h27.002V1.9061H208.557Z"/><path class="a" d="M444.434,46.2224H392.017V1.9061H368.191V113.094h23.826V67.6657h52.417V113.094H468.26V1.9061H444.434Z"/><path class="a" d="M44.3163,1.9061,0,113.094H24.779l9.0634-23.3495H80.2061L89.268,113.094h24.779L69.7307,1.9061ZM41.8575,69.0953l15.166-39.0746L72.19,69.0953Z"/><path class="a" d="M665.698,0c-32.086,0-54.8,23.826-54.8,57.6588,0,33.5152,22.714,57.3412,54.8,57.3412,31.926,0,54.482-23.826,54.482-57.3412C720.18,23.826,697.624,0,665.698,0Zm0,92.7624c-18.744,0-30.18-13.3425-30.18-35.1036,0-22.0787,11.436-35.4212,30.18-35.4212,18.584,0,29.861,13.3425,29.861,35.4212C695.559,79.42,684.282,92.7624,665.698,92.7624Z"/><path class="a" d="M998.785,75.7666c-4.13,10.8011-12.39,16.9958-23.668,16.9958-18.743,0-30.179-13.3425-30.179-35.1036,0-22.0787,11.436-35.4212,30.179-35.4212,11.278,0,19.538,6.1947,23.668,16.9958h25.255C1017.85,15.4075,999.261,0,975.117,0c-32.085,0-54.799,23.826-54.799,57.6588C920.318,91.174,943.032,115,975.117,115,999.42,115,1018,99.4337,1024.2,75.7666Z"/><path class="a" d="M846.934,1.9061,891.25,113.094h24.302L871.236,1.9061Z"/><path class="a" d="M796.74,1.9061H742.417V113.094h23.826V72.7486H796.74c25.256,0,40.663-13.3425,40.663-35.4213S821.996,1.9061,796.74,1.9061Zm-1.112,49.3991H766.243V23.3494h29.385c11.755,0,17.949,4.7652,17.949,13.9779S807.383,51.3052,795.628,51.3052Z"/><path class="a" d="M592.631,35.7389c0-20.9668-15.407-33.8328-40.663-33.8328H497.645V113.094h23.826V69.5718h26.525l23.827,43.5222h26.368L571.807,66.2568C585.05,61.166,592.631,50.4459,592.631,35.7389Zm-71.16-12.39h29.385c11.754,0,17.949,4.2887,17.949,12.39s-6.195,12.39-17.949,12.39H521.471Z"/></svg> <span>By Granthik</span></div>
+    <div class="ft-copy">
+      &copy; 2026 Team Sankhe × Team Choudhary. Independent community page — not the official Ozone Chain website.<br>
+      Not financial advice. Cryptocurrency investments carry significant risk. Please do your own research before investing.
+    </div>
+  </footer>
+
+  <script>
+    // ─── PRICES ───────────────────────────────────────
+    let ozUSD = 2.37;
+    let usdINR = 84.5;
+
+    function fmtINR(n) { return '&#8377;' + new Intl.NumberFormat('en-IN', { maximumFractionDigits: 2 }).format(n); }
+    function fmtUSD(n) { return '$' + n.toFixed(4); }
+    function fmtINRPlain(n) { return new Intl.NumberFormat('en-IN', { maximumFractionDigits: 2 }).format(n); }
+
+    async function fetchOzone() {
+      try {
+        const r = await fetch('https://chain-metrics-backend.ozonescan.com/api/v1/price/ozone');
+        const d = await r.json();
+        if (d.success && d.data) ozUSD = parseFloat(d.data);
+      } catch (e) { console.warn('Ozone API fallback'); }
+    }
+
+    async function fetchFX() {
+      try {
+        const r = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+        const d = await r.json();
+        if (d.rates && d.rates.INR) usdINR = d.rates.INR;
+      } catch (e) {
+        try {
+          const r2 = await fetch('https://open.er-api.com/v6/latest/USD');
+          const d2 = await r2.json();
+          if (d2.rates && d2.rates.INR) usdINR = d2.rates.INR;
+        } catch (e2) { console.warn('FX fallback'); }
+      }
+    }
+
+    function set(id, html) { const e = document.getElementById(id); if (e) e.innerHTML = html; }
+
+    function updateUI() {
+      const ozINR = ozUSD * usdINR;
+      const now = new Date();
+      const t = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+      set('w-usd', fmtUSD(ozUSD));
+      set('w-inr', fmtINR(ozINR));
+      set('w-time', 'Updated ' + t);
+      set('w-fx', '1 USD = &#8377;' + fmtINRPlain(usdINR));
+      ['t-oz1', 't-oz2'].forEach(id => set(id, fmtUSD(ozUSD)));
+      ['t-ozinr1', 't-ozinr2'].forEach(id => set(id, fmtINR(ozINR)));
+      const ip = document.getElementById('iPrice');
+      const ifx = document.getElementById('iFX');
+      if (ip) ip.value = fmtUSD(ozUSD).replace('$', '');
+      if (ifx) ifx.value = fmtINRPlain(usdINR) + ' INR';
+    }
+
+
+    async function init() {
+  await Promise.all([fetchOzone(), fetchFX(), fetchCrypto()]);
+  updateUI();
+
+  setInterval(async () => {
+    await Promise.all([fetchOzone(), fetchFX(), fetchCrypto()]);
+    updateUI();
+  }, 60000);
+}
+  
+    init();
+
+    // ─── CALCULATOR ───────────────────────────────────
+ function calculate() {
+  const ozone = parseFloat(document.getElementById('iOzone').value) || 0;
+  const days = parseInt(document.getElementById('iDays').value) || 600;
+
+  const ozINR = ozUSD * usdINR;
+
+  // Always show live conversion (even if < 20)
+  const usdValue = ozone * ozUSD;
+  const inrValue = usdValue * usdINR;
+
+  set('r-u', fmtUSD(usdValue));
+  set('r-i', fmtINR(inrValue));
+
+  // If below minimum, disable earnings
+  if (ozone < 20) {
+    set('r-d', 'Min 20 OZONE Required');
+    set('r-o', '-');
+    set('r-dy', days + ' Days');
+    return;
+  }
+
+  // Normal calculation (>= 20)
+  const daily = ozone * 0.0035;
+  const total = daily * days;
+
+  set('r-d', daily.toFixed(4) + ' OZONE');
+  set('r-o', fmtINRPlain(total) + ' OZONE');
+  set('r-dy', days + ' Days');
+}
+
+    // ─── VALIDATORS ───────────────────────────────────
+    function fmtTokens(rawTokens) {
+      // tokens are in 18-decimal format (like wei)
+      const OZONE = parseFloat(rawTokens) / 1e18;
+      if (OZONE >= 1e9) return (OZONE / 1e9).toFixed(2) + 'B';
+      if (OZONE >= 1e6) return (OZONE / 1e6).toFixed(2) + 'M';
+      if (OZONE >= 1e3) return (OZONE / 1e3).toFixed(2) + 'K';
+      return OZONE.toFixed(2);
+    }
+
+    function shortAddr(addr) {
+      if (!addr) return '—';
+      return addr.slice(0, 14) + '...' + addr.slice(-6);
+    }
+
+    function initials(moniker) {
+      return moniker.replace(/-/g, ' ').split(' ').slice(0, 2).map(w => w[0] || '').join('').toUpperCase() || '??';
+    }
+
+    async function loadValidators() {
+      const grid = document.getElementById('val-grid');
+      grid.innerHTML = '<div class="val-loading"><div class="val-spinner"></div>Fetching live validator data...</div>';
+
+      try {
+        const res = await fetch('https://cosmos.ozonescan.com/api/cosmos/staking/v1beta1/validators?pagination.limit=500&status=BOND_STATUS_BONDED');
+        const data = await res.json();
+        const validators = data.validators || [];
+
+        // Sort by tokens descending
+        validators.sort((a, b) => {
+          return parseFloat(b.tokens) - parseFloat(a.tokens);
+        });
+
+        // Update stats
+        const totalTokens = validators.reduce((sum, v) => sum + parseFloat(v.tokens || 0), 0);
+        document.getElementById('vs-count').textContent = validators.length;
+        document.getElementById('vs-tokens').textContent = fmtTokens(totalTokens.toString());
+
+        if (validators.length === 0) {
+          grid.innerHTML = '<div class="val-error">No active validators found.</div>';
+          return;
+        }
+
+        grid.innerHTML = validators.map((v, i) => {
+          const moniker = v.description?.moniker || 'Unknown';
+          const addr = v.operator_address || '';
+          const tokens = v.tokens || '0';
+          const commRate = v.commission?.commission_rates?.rate || '0';
+          const commPct = (parseFloat(commRate) * 100).toFixed(0) + '%';
+          const rank = i + 1;
+
+          return `
+            <div class="val-card">
+              <div class="val-rank">#${rank}</div>
+              <div class="val-icon">${initials(moniker)}</div>
+              <div class="val-moniker">${moniker}</div>
+              <div class="val-addr">${shortAddr(addr)}</div>
+              <div class="val-divider"></div>
+              <div class="val-meta">
+                <span class="val-chip bonded">● Bonded</span>
+                <span class="val-chip commission">Fee ${commPct}</span>
+              </div>
+              <div class="val-tokens-row">
+                <span class="val-tokens-lbl">Staked</span>
+                <span class="val-tokens-val">${fmtTokens(tokens)} OZONE</span>
+              </div>
+            </div>`;
+        }).join('');
+
+      } catch (err) {
+        console.error('Validator fetch failed:', err);
+        grid.innerHTML = `<div class="val-error">Could not load validators. The API may be temporarily unavailable.<br><br><small style="opacity:0.6;">${err.message}</small></div>`;
+      }
+    }
+
+    let validatorsVisible = true;
+
+function toggleValidators() {
+  const grid = document.getElementById('val-grid');
+  const btn = document.getElementById('valToggleBtn');
+
+  validatorsVisible = !validatorsVisible;
+
+  if (validatorsVisible) {
+    grid.style.display = 'grid'; // or 'block' if you're using block layout
+    btn.textContent = 'Hide List';
+  } else {
+    grid.style.display = 'none';
+    btn.textContent = 'Show List';
+  }
+}
+
+    // Auto-load validators on page load
+    loadValidators();
+
+  async function fetchCrypto() {
+  try {
+    const r = await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,solana&vs_currencies=inr&include_24hr_change=true'
+    );
+    const d = await r.json();
+
+    updateCoin('btc', d.bitcoin);
+    updateCoin('eth', d.ethereum);
+    updateCoin('bnb', d.binancecoin);
+    updateCoin('sol', d.solana);
+
+  } catch (e) {
+    console.warn('Crypto API failed');
+  }
+}
+
+function updateCoin(prefix, data) {
+  if (!data) return;
+
+  const price = data.inr;
+  const change = data.inr_24h_change;
+
+  const priceEl = document.getElementById(prefix + '-inr');
+  const changeEl = document.getElementById(prefix + '-ch');
+
+  if (priceEl) priceEl.innerHTML = fmtINR(price);
+
+  if (changeEl) {
+    const sign = change >= 0 ? '+' : '';
+    changeEl.textContent = sign + change.toFixed(2) + '%';
+    changeEl.style.color = change >= 0 ? '#16c784' : '#ea3943';
+  }
+}
+
+    // ─── MOBILE MENU ──────────────────────────────────
+    function toggleMenu() { document.getElementById('mobMenu').classList.toggle('open'); }
+    function closeMenu() { document.getElementById('mobMenu').classList.remove('open'); }
+
+    // ─── SCROLL REVEAL ────────────────────────────────
+    const ro = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  </script>
+</body>
+</html>
