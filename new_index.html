@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>TestX — Route Map</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Source+Code+Pro:wght@400;600&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+/* ── RESET ── */
+*{box-sizing:border-box;margin:0;padding:0;}
+
+/* ── SCREEN BASE ── */
+:root{
+  --accent:#1565c0;
+  --accent-dark:#0d47a1;
+  --text:#1a1a1a;
+  --text2:#444;
+  --text3:#777;
+  --border:#d0d0d0;
+  --border-light:#e8e8e8;
+  --bg:#f4f4f4;
+  --surface:#fff;
+
+  --get:#1976d2;      --get-bg:#e3f2fd;    --get-border:#90caf9;
+  --post:#2e7d32;     --post-bg:#e8f5e9;   --post-border:#a5d6a7;
+  --put:#e65100;      --put-bg:#fff3e0;    --put-border:#ffcc80;
+  --delete:#c62828;   --delete-bg:#ffebee; --delete-border:#ef9a9a;
+
+  --grp-pub:#e8f5e9;    --grp-pub-b:#2e7d32;
+  --grp-auth:#fff3e0;   --grp-auth-b:#e65100;
+  --grp-buyer:#e3f2fd;  --grp-buyer-b:#1565c0;
+  --grp-vendor:#f3e5f5; --grp-vendor-b:#6a1b9a;
+  --grp-admin:#fce4ec;  --grp-admin-b:#c2185b;
+  --grp-wallet:#e0f7fa; --grp-wallet-b:#00838f;
+  --grp-reset:#fffde7;  --grp-reset-b:#f57f17;
+
+  --font:'Source Sans Pro',sans-serif;
+  --display:'Oswald',sans-serif;
+  --mono:'Source Code Pro',monospace;
+}
+
+body{
+  background:var(--bg);
+  font-family:var(--font);
+  color:var(--text);
+  font-size:12px;
+  line-height:1.5;
+}
+
+/* ── COVER PAGE ── */
+.cover{
+  width:210mm;
+  min-height:297mm;
+  margin:0 auto 20px;
+  background:var(--surface);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  padding:60px 56px;
+  position:relative;
+  overflow:hidden;
+  page-break-after:always;
+}
+.cover-stripe{position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--accent);}
+.cover-logo{font-family:var(--display);font-size:36px;font-weight:700;letter-spacing:.04em;color:var(--text);margin-bottom:4px;}
+.cover-logo em{color:var(--accent);font-style:normal;}
+.cover-tagline{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:48px;}
+.cover-title{font-family:var(--display);font-size:52px;font-weight:700;color:var(--text);line-height:1.0;letter-spacing:-.01em;margin-bottom:8px;}
+.cover-title span{color:var(--accent);}
+.cover-subtitle{font-size:15px;color:var(--text2);margin-bottom:48px;max-width:340px;line-height:1.6;}
+.cover-meta{display:flex;flex-direction:column;gap:6px;margin-bottom:48px;}
+.cover-meta-row{display:flex;gap:12px;align-items:center;}
+.cover-meta-label{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;width:80px;flex-shrink:0;}
+.cover-meta-val{font-family:var(--mono);font-size:11px;color:var(--text);font-weight:600;}
+.cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:auto;width:100%;}
+.cover-stat{background:var(--surface);padding:14px 16px;}
+.cover-stat-val{font-family:var(--display);font-size:28px;font-weight:700;color:var(--accent);line-height:1;}
+.cover-stat-label{font-family:var(--mono);font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;}
+
+/* ── PAGE ── */
+.page{
+  width:210mm;
+  margin:0 auto 12px;
+  background:var(--surface);
+  padding:28px 32px 24px;
+  page-break-inside:avoid;
+}
+.page.break-before{page-break-before:always;}
+
+/* ── PAGE HEADER ── */
+.page-hdr{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;margin-bottom:20px;border-bottom:3px solid var(--accent);}
+.page-hdr-left{display:flex;align-items:center;gap:12px;}
+.page-hdr-logo{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text);letter-spacing:.04em;}
+.page-hdr-logo em{color:var(--accent);font-style:normal;}
+.page-hdr-title{font-family:var(--display);font-size:20px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.04em;}
+.page-hdr-right{font-family:var(--mono);font-size:9px;color:var(--text3);text-align:right;letter-spacing:.05em;}
+
+/* ── SECTION GROUP ── */
+.route-group{margin-bottom:20px;border:1px solid var(--border);page-break-inside:avoid;}
+.group-head{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--border);}
+.group-title{display:flex;align-items:center;gap:10px;}
+.group-label{font-family:var(--display);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
+.group-path{font-family:var(--mono);font-size:11px;color:var(--text3);}
+.group-meta{display:flex;align-items:center;gap:8px;}
+.group-badge{font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 8px;letter-spacing:.06em;text-transform:uppercase;border:1px solid;}
+.group-count{font-family:var(--mono);font-size:9px;color:var(--text3);}
+.group-middleware{display:flex;gap:4px;flex-wrap:wrap;padding:6px 14px;border-bottom:1px solid var(--border-light);background:#fafafa;}
+.mw-chip{font-family:var(--mono);font-size:9px;color:var(--text3);padding:1px 7px;border:1px solid var(--border-light);background:#fff;letter-spacing:.04em;}
+.mw-chip.auth{color:#c62828;border-color:#ef9a9a;background:#fff5f5;}
+.mw-chip.rate{color:#e65100;border-color:#ffcc80;background:#fffbe6;}
+.mw-chip.time{color:#1565c0;border-color:#90caf9;background:#f0f7ff;}
+.mw-chip.body{color:#6a1b9a;border-color:#ce93d8;background:#faf5ff;}
+
+/* ── ROUTE TABLE ── */
+.route-table{width:100%;border-collapse:collapse;}
+.route-table th{font-family:var(--mono);font-size:8.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;padding:5px 10px;text-align:left;background:#fafafa;border-bottom:1px solid var(--border-light);}
+.route-table td{padding:6px 10px;border-bottom:1px solid var(--border-light);vertical-align:middle;}
+.route-table tr:last-child td{border-bottom:none;}
+.route-table tr:hover td{background:#f8faff;}
+
+.method{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 7px;letter-spacing:.06em;text-transform:uppercase;min-width:42px;text-align:center;border:1px solid;}
+.method-GET{color:var(--get);background:var(--get-bg);border-color:var(--get-border);}
+.method-POST{color:var(--post);background:var(--post-bg);border-color:var(--post-border);}
+.method-PUT{color:var(--put);background:var(--put-bg);border-color:var(--put-border);}
+.method-DELETE{color:var(--delete);background:var(--delete-bg);border-color:var(--delete-border);}
+
+.path-cell{font-family:var(--mono);font-size:10.5px;color:var(--text);font-weight:600;}
+.path-param{color:var(--accent);}
+.handler-cell{font-family:var(--mono);font-size:9.5px;color:var(--text3);}
+.handler-pkg{color:var(--text3);}
+.handler-fn{color:var(--text);}
+.desc-cell{font-size:11px;color:var(--text2);line-height:1.4;}
+.auth-cell{text-align:center;}
+.auth-icon{font-size:11px;}
+.extra-mw{display:flex;gap:3px;flex-wrap:wrap;}
+.mw-mini{font-family:var(--mono);font-size:8px;color:var(--text3);padding:1px 5px;border:1px solid var(--border-light);background:#fafafa;letter-spacing:.03em;}
+.mw-mini.danger{color:#c62828;border-color:#ef9a9a;background:#fff5f5;}
+
+/* ── MIDDLEWARE LEGEND ── */
+.legend{border:1px solid var(--border);margin-bottom:20px;}
+.legend-head{padding:8px 14px;border-bottom:1px solid var(--border);background:#fafafa;}
+.legend-title{font-family:var(--display);font-size:12px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.06em;}
+.legend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;background:var(--border);}
+.legend-item{background:var(--surface);padding:10px 14px;display:flex;gap:10px;align-items:flex-start;}
+.legend-chip{font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 8px;border:1px solid;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0;margin-top:1px;}
+.legend-desc{font-size:11px;color:var(--text2);line-height:1.4;}
+.legend-desc strong{font-family:var(--mono);font-size:10px;color:var(--text);}
+
+/* ── RATE LIMITER TABLE ── */
+.config-table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+.config-table th{font-family:var(--mono);font-size:8.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;padding:5px 10px;text-align:left;background:#fafafa;border-bottom:2px solid var(--border);}
+.config-table td{padding:7px 10px;border-bottom:1px solid var(--border-light);font-size:11px;color:var(--text2);}
+.config-table tr:last-child td{border-bottom:none;}
+.mono-cell{font-family:var(--mono);font-size:10px;color:var(--text);}
+
+/* ── ARCHITECTURE BOX ── */
+.arch-box{border:1px solid var(--border);margin-bottom:20px;page-break-inside:avoid;}
+.arch-head{padding:8px 14px;border-bottom:1px solid var(--border);background:#fafafa;}
+.arch-title{font-family:var(--display);font-size:12px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.06em;}
+.arch-body{padding:14px;}
+.arch-flow{display:flex;align-items:center;flex-wrap:wrap;gap:0;}
+.arch-step{display:flex;flex-direction:column;align-items:center;padding:8px 12px;background:#f8f8f8;border:1px solid var(--border);min-width:80px;text-align:center;}
+.arch-step-name{font-family:var(--display);font-size:10px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.04em;}
+.arch-step-desc{font-family:var(--mono);font-size:8px;color:var(--text3);margin-top:2px;}
+.arch-arrow{font-size:16px;color:var(--border);padding:0 4px;}
+.arch-step.highlight{background:var(--get-bg);border-color:var(--get-border);}
+.arch-step.highlight .arch-step-name{color:var(--accent);}
+
+/* ── SECTION SEPARATOR ── */
+.section-sep{display:flex;align-items:center;gap:10px;margin:20px 0 14px;}
+.section-sep-line{flex:1;height:1px;background:var(--border);}
+.section-sep-label{font-family:var(--display);font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;}
+
+/* ── FOOTER ── */
+.page-footer{border-top:1px solid var(--border);padding-top:10px;margin-top:20px;display:flex;align-items:center;justify-content:space-between;}
+.page-footer-left{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.05em;}
+.page-footer-right{font-family:var(--mono);font-size:9px;color:var(--text3);}
+.page-footer-center{font-family:var(--mono);font-size:9px;color:var(--text3);}
+
+/* ── PRINT STYLES ── */
+@media print {
+  body{background:#fff;}
+  .cover,.page{box-shadow:none;margin:0;page-break-after:auto;}
+  .cover{page-break-after:always;}
+  .route-group{page-break-inside:avoid;}
+  @page{size:A4;margin:0;}
+}
+
+/* ── SCREEN SHADOW ── */
+@media screen {
+  .cover,.page{box-shadow:0 2px 12px rgba(0,0,0,.1);margin-bottom:16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     COVER PAGE
+════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-stripe"></div>
+  <div class="cover-logo">TEST<em>X</em></div>
+  <div class="cover-tagline">Verified · Compliant · E-KYC Marketplace</div>
+
+  <div class="cover-title">HTTP<br><span>Route</span><br>Map</div>
+  <div class="cover-subtitle">Complete HTTP routing reference for the TestX marketplace backend — methods, paths, handlers, middleware, and rate limits.</div>
+
+  <div class="cover-meta">
+    <div class="cover-meta-row"><span class="cover-meta-label">Package</span><span class="cover-meta-val">marketplace/backend/internal/routes</span></div>
+    <div class="cover-meta-row"><span class="cover-meta-label">Router</span><span class="cover-meta-val">github.com/go-chi/chi/v5</span></div>
+    <div class="cover-meta-row"><span class="cover-meta-label">Version</span><span class="cover-meta-val">v2.7.4</span></div>
+    <div class="cover-meta-row"><span class="cover-meta-label">Generated</span><span class="cover-meta-val">2025-01-15</span></div>
+    <div class="cover-meta-row"><span class="cover-meta-label">File</span><span class="cover-meta-val">routes/routes.go</span></div>
+  </div>
+
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="cover-stat-val">47</div><div class="cover-stat-label">Total Routes</div></div>
+    <div class="cover-stat"><div class="cover-stat-val">8</div><div class="cover-stat-label">Route Groups</div></div>
+    <div class="cover-stat"><div class="cover-stat-val">4</div><div class="cover-stat-label">Rate Limiters</div></div>
+    <div class="cover-stat"><div class="cover-stat-val">3</div><div class="cover-stat-label">Timeouts</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE 1 — Architecture + Config
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-hdr">
+    <div class="page-hdr-left">
+      <div class="page-hdr-logo">TEST<em>X</em></div>
+      <div class="page-hdr-title">Architecture Overview</div>
+    </div>
+    <div class="page-hdr-right">routes/routes.go<br>Page 1 of 4</div>
+  </div>
+
+  <!-- Request flow -->
+  <div class="arch-box">
+    <div class="arch-head"><div class="arch-title">Request Lifecycle</div></div>
+    <div class="arch-body">
+      <div class="arch-flow">
+        <div class="arch-step highlight"><div class="arch-step-name">Request</div><div class="arch-step-desc">HTTP In</div></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-step"><div class="arch-step-name">AuditCtx</div><div class="arch-step-desc">Global MW</div></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-step"><div class="arch-step-name">Rate Limit</div><div class="arch-step-desc">Group scope</div></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-step"><div class="arch-step-name">Timeout</div><div class="arch-step-desc">5 / 8 / 15s</div></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-step"><div class="arch-step-name">Body Limit</div><div class="arch-step-desc">16–256 KiB</div></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-step"><div class="arch-step-name">Auth MW</div><div class="arch-step-desc">Session check</div></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-step highlight"><div class="arch-step-name">Handler</div><div class="arch-step-desc">Business logic</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rate limiters -->
+  <div class="section-sep"><div class="section-sep-line"></div><div class="section-sep-label">Rate Limiters</div><div class="section-sep-line"></div></div>
+  <table class="config-table">
+    <thead><tr><th>Name</th><th>Limit</th><th>Window</th><th>Applied To</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td class="mono-cell">loginLimiter</td><td class="mono-cell">25 req</td><td class="mono-cell">1 min</td><td>POST /login, POST /vendor/login</td><td>Brute-force protection on credential endpoints</td></tr>
+      <tr><td class="mono-cell">resetLimiter</td><td class="mono-cell">5 req</td><td class="mono-cell">1 min</td><td>POST /reset/password</td><td>Prevents password-reset enumeration attacks</td></tr>
+      <tr><td class="mono-cell">orderLimiter</td><td class="mono-cell">10 req</td><td class="mono-cell">1 min</td><td>POST /buyer/api/checkout</td><td>Stops order flooding / payment abuse</td></tr>
+      <tr><td class="mono-cell">generalLimiter</td><td class="mono-cell">1 000 req</td><td class="mono-cell">1 min</td><td>All other groups</td><td>General API abuse prevention</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Timeouts -->
+  <div class="section-sep"><div class="section-sep-line"></div><div class="section-sep-label">Timeouts</div><div class="section-sep-line"></div></div>
+  <table class="config-table">
+    <thead><tr><th>Name</th><th>Duration</th><th>Message</th><th>Applied To</th></tr></thead>
+    <tbody>
+      <tr><td class="mono-cell">publicTimeout</td><td class="mono-cell">5 s</td><td>Request timeout</td><td>Public pages, public API, buyer/vendor pages</td></tr>
+      <tr><td class="mono-cell">authTimeout</td><td class="mono-cell">8 s</td><td>Authentication timeout</td><td>Auth group (login, register), password reset</td></tr>
+      <tr><td class="mono-cell">orderTimeout</td><td class="mono-cell">15 s</td><td>Order timeout</td><td>POST /buyer/api/checkout only</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Body limits -->
+  <div class="section-sep"><div class="section-sep-line"></div><div class="section-sep-label">Body Size Limits</div><div class="section-sep-line"></div></div>
+  <table class="config-table">
+    <thead><tr><th>Name</th><th>Max Size</th><th>Applied To</th></tr></thead>
+    <tbody>
+      <tr><td class="mono-cell">authBody</td><td class="mono-cell">16 KiB</td><td>Auth group — credential payloads</td></tr>
+      <tr><td class="mono-cell">orderBody</td><td class="mono-cell">64 KiB</td><td>POST /buyer/api/checkout — order payloads</td></tr>
+      <tr><td class="mono-cell">productBody</td><td class="mono-cell">256 KiB</td><td>POST/PUT /vendor/api/products — listings with images</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Middleware legend -->
+  <div class="legend">
+    <div class="legend-head"><div class="legend-title">Middleware Legend</div></div>
+    <div class="legend-grid">
+      <div class="legend-item"><span class="legend-chip auth" style="color:#c62828;border-color:#ef9a9a;background:#fff5f5;">RequireBuyer</span><div class="legend-desc">Session must contain an authenticated buyer. Redirects to <strong>/login</strong> on failure.</div></div>
+      <div class="legend-item"><span class="legend-chip auth" style="color:#6a1b9a;border-color:#ce93d8;background:#faf5ff;">RequireVendor</span><div class="legend-desc">Session must contain an authenticated vendor. Redirects to <strong>/vendor/login</strong> on failure.</div></div>
+      <div class="legend-item"><span class="legend-chip auth" style="color:#c2185b;border-color:#f48fb1;background:#fce4ec;">RequireAdmin</span><div class="legend-desc">Session must have admin role. Returns 403 Forbidden for non-admins.</div></div>
+      <div class="legend-item"><span class="legend-chip" style="color:#1565c0;border-color:#90caf9;background:#e3f2fd;">AuditContext</span><div class="legend-desc">Global. Injects request ID and user ID into context for audit logging on every request.</div></div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-left">TESTX MARKETPLACE · INTERNAL DOCUMENTATION</div>
+    <div class="page-footer-center">routes/routes.go</div>
+    <div class="page-footer-right">Page 1 of 4</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE 2 — Public, Auth, Public API, Buyer
+════════════════════════════════════════════ -->
+<div class="page break-before">
+  <div class="page-hdr">
+    <div class="page-hdr-left">
+      <div class="page-hdr-logo">TEST<em>X</em></div>
+      <div class="page-hdr-title">Public · Auth · API · Buyer</div>
+    </div>
+    <div class="page-hdr-right">routes/routes.go<br>Page 2 of 4</div>
+  </div>
+
+  <!-- PUBLIC PAGES -->
+  <div class="route-group">
+    <div class="group-head" style="background:var(--grp-pub);border-left:4px solid var(--grp-pub-b);">
+      <div class="group-title">
+        <span class="group-label" style="color:var(--grp-pub-b);">Public Pages</span>
+        <span class="group-path">No authentication required — unauthenticated page renders</span>
+      </div>
+      <div class="group-meta">
+        <span class="group-badge" style="color:var(--grp-pub-b);border-color:var(--grp-pub-b);background:#fff;">7 routes</span>
+      </div>
+    </div>
+    <div class="group-middleware">
+      <span class="mw-chip rate">generalLimiter</span>
+      <span class="mw-chip time">publicTimeout (5s)</span>
+    </div>
+    <table class="route-table">
+      <thead><tr><th width="52">Method</th><th width="200">Path</th><th width="160">Handler</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/login</td><td class="handler-cell"><span class="handler-pkg">pageauthbuyer.</span><span class="handler-fn">BuyerLoginPage</span></td><td class="desc-cell">Buyer login page</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/register</td><td class="handler-cell"><span class="handler-pkg">pageauthbuyer.</span><span class="handler-fn">BuyerRegisterPage</span></td><td class="desc-cell">Buyer registration page</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendor/login</td><td class="handler-cell"><span class="handler-pkg">pageauthvendor.</span><span class="handler-fn">VendorLoginPage</span></td><td class="desc-cell">Vendor login page</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendor/register</td><td class="handler-cell"><span class="handler-pkg">pageauthvendor.</span><span class="handler-fn">VendorRegisterPage</span></td><td class="desc-cell">Vendor registration page</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/reset/password</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">PasswordResetPage</span></td><td class="desc-cell">Password reset request page</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/terms</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">TermsPage</span></td><td class="desc-cell">Terms of service</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/privacy</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">PrivacyPage</span></td><td class="desc-cell">Privacy policy</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- AUTH ACTIONS -->
+  <div class="route-group">
+    <div class="group-head" style="background:var(--grp-auth);border-left:4px solid var(--grp-auth-b);">
+      <div class="group-title">
+        <span class="group-label" style="color:var(--grp-auth-b);">Auth Actions</span>
+        <span class="group-path">Login · Register · Logout — handlers guard against double-login</span>
+      </div>
+      <div class="group-meta">
+        <span class="group-badge" style="color:var(--grp-auth-b);border-color:var(--grp-auth-b);background:#fff;">5 routes</span>
+      </div>
+    </div>
+    <div class="group-middleware">
+      <span class="mw-chip time">authTimeout (8s)</span>
+      <span class="mw-chip body">authBody (16 KiB)</span>
+      <span class="mw-chip rate">loginLimiter (25/min) on login routes</span>
+    </div>
+    <table class="route-table">
+      <thead><tr><th width="52">Method</th><th width="200">Path</th><th width="160">Handler</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/login</td><td class="handler-cell"><span class="handler-pkg">loginhandlers.</span><span class="handler-fn">BuyerLogin</span></td><td class="desc-cell">Buyer login action <span class="mw-mini danger">loginLimiter</span></td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/vendor/login</td><td class="handler-cell"><span class="handler-pkg">loginhandlers.</span><span class="handler-fn">VendorLogin</span></td><td class="desc-cell">Vendor login action <span class="mw-mini danger">loginLimiter</span></td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/register</td><td class="handler-cell"><span class="handler-pkg">registerhandlers.</span><span class="handler-fn">BuyerRegister</span></td><td class="desc-cell">Buyer registration action</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/vendor/register</td><td class="handler-cell"><span class="handler-pkg">registerhandlers.</span><span class="handler-fn">VendorRegister</span></td><td class="desc-cell">Vendor registration action</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/logout</td><td class="handler-cell"><span class="handler-pkg">authhandlers.</span><span class="handler-fn">Logout</span></td><td class="desc-cell">Session termination (all roles)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PUBLIC API -->
+  <div class="route-group">
+    <div class="group-head" style="background:#f8f8f8;border-left:4px solid #546e7a;">
+      <div class="group-title">
+        <span class="group-label" style="color:#546e7a;">Public API</span>
+        <span class="group-path">/api/** — read-only, no auth required, embeddable</span>
+      </div>
+      <div class="group-meta">
+        <span class="group-badge" style="color:#546e7a;border-color:#546e7a;background:#fff;">2 routes</span>
+      </div>
+    </div>
+    <div class="group-middleware">
+      <span class="mw-chip rate">generalLimiter</span>
+      <span class="mw-chip time">publicTimeout (5s)</span>
+    </div>
+    <table class="route-table">
+      <thead><tr><th width="52">Method</th><th width="200">Path</th><th width="160">Handler</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/api/products</td><td class="handler-cell"><span class="handler-pkg">producthandlers.</span><span class="handler-fn">GetAllProducts</span></td><td class="desc-cell">Paginated product list — suitable for third-party embeds</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/api/products/<span class="path-param">{id}</span></td><td class="handler-cell"><span class="handler-pkg">producthandlers.</span><span class="handler-fn">GetProduct</span></td><td class="desc-cell">Single product by ID</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BUYER PAGES -->
+  <div class="route-group">
+    <div class="group-head" style="background:var(--grp-buyer);border-left:4px solid var(--grp-buyer-b);">
+      <div class="group-title">
+        <span class="group-label" style="color:var(--grp-buyer-b);">Protected Buyer Pages</span>
+        <span class="group-path">RequireBuyer session — browsing, cart, reviews</span>
+      </div>
+      <div class="group-meta">
+        <span class="group-badge" style="color:var(--grp-buyer-b);border-color:var(--grp-buyer-b);background:#fff;">13 routes</span>
+      </div>
+    </div>
+    <div class="group-middleware">
+      <span class="mw-chip auth">RequireBuyer</span>
+      <span class="mw-chip rate">generalLimiter</span>
+      <span class="mw-chip time">publicTimeout (5s)</span>
+    </div>
+    <table class="route-table">
+      <thead><tr><th width="52">Method</th><th width="200">Path</th><th width="160">Handler</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">HomePage</span></td><td class="desc-cell">Marketplace home / feed</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/profile</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">ProfilePage</span></td><td class="desc-cell">Buyer profile</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/messages</td><td class="handler-cell"><span class="handler-pkg">pagebuyer.</span><span class="handler-fn">MessagesPage</span></td><td class="desc-cell">Inbox / messaging</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/listings</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">ListingsPage</span></td><td class="desc-cell">All listings browse</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendors</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">VendorsPage</span></td><td class="desc-cell">Vendor directory</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/products</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">ProductsPage</span></td><td class="desc-cell">Product catalogue</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/product/<span class="path-param">{id}</span></td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">ProductDetailPage</span></td><td class="desc-cell">Single product detail</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/cart</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">CartPage</span></td><td class="desc-cell">Shopping cart</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/checkout</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">CheckoutPage</span></td><td class="desc-cell">Checkout summary</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/security</td><td class="handler-cell"><span class="handler-pkg">pagebuyer.</span><span class="handler-fn">SecuritySettings</span></td><td class="desc-cell">Security settings page</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/api/products/<span class="path-param">{id}</span>/reviews</td><td class="handler-cell"><span class="handler-pkg">reviewhandlers.</span><span class="handler-fn">SubmitReview</span></td><td class="desc-cell">Create a new product review</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/api/reviews/<span class="path-param">{id}</span>/update</td><td class="handler-cell"><span class="handler-pkg">reviewhandlers.</span><span class="handler-fn">UpdateReview</span></td><td class="desc-cell">Edit own review</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/api/reviews/<span class="path-param">{id}</span>/delete</td><td class="handler-cell"><span class="handler-pkg">reviewhandlers.</span><span class="handler-fn">DeleteReview</span></td><td class="desc-cell">Delete own review</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-left">TESTX MARKETPLACE · INTERNAL DOCUMENTATION</div>
+    <div class="page-footer-center">routes/routes.go</div>
+    <div class="page-footer-right">Page 2 of 4</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE 3 — Buyer API + Vendor
+════════════════════════════════════════════ -->
+<div class="page break-before">
+  <div class="page-hdr">
+    <div class="page-hdr-left">
+      <div class="page-hdr-logo">TEST<em>X</em></div>
+      <div class="page-hdr-title">Buyer API · Vendor</div>
+    </div>
+    <div class="page-hdr-right">routes/routes.go<br>Page 3 of 4</div>
+  </div>
+
+  <!-- BUYER /buyer/api/ -->
+  <div class="route-group">
+    <div class="group-head" style="background:var(--grp-buyer);border-left:4px solid var(--grp-buyer-b);">
+      <div class="group-title">
+        <span class="group-label" style="color:var(--grp-buyer-b);">Buyer Dashboard Pages</span>
+        <span class="group-path">/buyer/** — RequireBuyer · dashboard, orders, settings</span>
+      </div>
+      <div class="group-meta">
+        <span class="group-badge" style="color:var(--grp-buyer-b);border-color:var(--grp-buyer-b);background:#fff;">5 routes</span>
+      </div>
+    </div>
+    <div class="group-middleware">
+      <span class="mw-chip auth">RequireBuyer</span>
+      <span class="mw-chip rate">generalLimiter</span>
+      <span class="mw-chip time">publicTimeout (5s)</span>
+    </div>
+    <table class="route-table">
+      <thead><tr><th width="52">Method</th><th width="210">Path</th><th width="160">Handler</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/buyer/dashboard</td><td class="handler-cell"><span class="handler-pkg">pagebuyer.</span><span class="handler-fn">BuyerDashboard</span></td><td class="desc-cell">Buyer overview dashboard</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/buyer/orders</td><td class="handler-cell"><span class="handler-pkg">buyerorders.</span><span class="handler-fn">List</span></td><td class="desc-cell">Order history list</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/buyer/order/<span class="path-param">{id}</span></td><td class="handler-cell"><span class="handler-pkg">buyerorders.</span><span class="handler-fn">Detail</span></td><td class="desc-cell">Single order detail page</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/buyer/security</td><td class="handler-cell"><span class="handler-pkg">pagebuyer.</span><span class="handler-fn">SecuritySettings</span></td><td class="desc-cell">Security settings</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/buyer/account</td><td class="handler-cell"><span class="handler-pkg">pagebuyer.</span><span class="handler-fn">AccountSettingsPage</span></td><td class="desc-cell">Account settings page</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BUYER API -->
+  <div class="route-group">
+    <div class="group-head" style="background:var(--grp-buyer);border-left:4px solid var(--grp-buyer-b);">
+      <div class="group-title">
+        <span class="group-label" style="color:var(--grp-buyer-b);">Buyer API</span>
+        <span class="group-path">/buyer/api/** — RequireBuyer · settings, cart, messages, checkout</span>
+      </div>
+      <div class="group-meta">
+        <span class="group-badge" style="color:var(--grp-buyer-b);border-color:var(--grp-buyer-b);background:#fff;">20 routes</span>
+      </div>
+    </div>
+    <div class="group-middleware">
+      <span class="mw-chip auth">RequireBuyer</span>
+      <span class="mw-chip rate">generalLimiter</span>
+    </div>
+    <table class="route-table">
+      <thead><tr><th width="52">Method</th><th width="260">Path</th><th width="160">Handler</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td colspan="4" style="padding:4px 10px;background:#f5f5f5;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Settings</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/currency</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">UpdateCurrency</span></td><td class="desc-cell">Update display currency preference</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/twofa</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">Toggle2FA</span></td><td class="desc-cell">Enable / disable 2FA</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/encrypt</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">ToggleEncryptMessages</span></td><td class="desc-cell">Toggle message encryption</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/privacy</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">ToggleOnlineStatus</span></td><td class="desc-cell">Hide / show online status</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/freeze</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">FreezeAccount</span></td><td class="desc-cell">Temporarily freeze account</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/delete</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">DeleteAccount</span></td><td class="desc-cell">Permanently delete account</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/wallet</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">ConnectWallet</span></td><td class="desc-cell">Link / unlink crypto wallet (SIWE)</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/walletlogin</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">ToggleWalletLogin</span></td><td class="desc-cell">Toggle passwordless wallet login</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/profile</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">UpdateProfile</span></td><td class="desc-cell">Update profile information</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/contact</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">SaveContactInfo</span></td><td class="desc-cell">Save contact information</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/settings/notify_*</td><td class="handler-cell"><span class="handler-pkg">buyersettings.</span><span class="handler-fn">SaveContactInfo</span></td><td class="desc-cell">Notification prefs (marketing / orders / disputes)</td></tr>
+        <tr><td colspan="4" style="padding:4px 10px;background:#f5f5f5;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Cart</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/cart/add</td><td class="handler-cell"><span class="handler-pkg">carthandlers.</span><span class="handler-fn">AddToCart</span></td><td class="desc-cell">Add SKU to cart</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/buyer/api/cart/items</td><td class="handler-cell"><span class="handler-pkg">carthandlers.</span><span class="handler-fn">GetCartItems</span></td><td class="desc-cell">Fetch current cart contents</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/cart/remove</td><td class="handler-cell"><span class="handler-pkg">carthandlers.</span><span class="handler-fn">RemoveCartItem</span></td><td class="desc-cell">Remove line item from cart</td></tr>
+        <tr><td colspan="4" style="padding:4px 10px;background:#f5f5f5;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Messaging</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/messages/send</td><td class="handler-cell"><span class="handler-pkg">pagebuyer.</span><span class="handler-fn">SendMessageAPI</span></td><td class="desc-cell">Send message in existing conversation</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/messages/start</td><td class="handler-cell"><span class="handler-pkg">pagebuyer.</span><span class="handler-fn">StartConversationAPI</span></td><td class="desc-cell">Start a new conversation</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/messages/report</td><td class="handler-cell"><span class="handler-pkg">pagebuyer.</span><span class="handler-fn">ReportVendorAPI</span></td><td class="desc-cell">Report a vendor</td></tr>
+        <tr><td colspan="4" style="padding:4px 10px;background:#f5f5f5;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Checkout &amp; Orders</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/buyer/api/checkout</td><td class="handler-cell"><span class="handler-pkg">carthandlers.</span><span class="handler-fn">CreateOrder</span></td><td class="desc-cell">Submit order &amp; initiate payment <span class="mw-mini danger">orderLimiter</span> <span class="mw-mini">orderTimeout 15s</span> <span class="mw-mini">orderBody 64KiB</span></td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/buyer/api/orders</td><td class="handler-cell"><span class="handler-pkg">buyerorders.</span><span class="handler-fn">List</span></td><td class="desc-cell">AJAX-pollable order list mirror</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VENDOR -->
+  <div class="route-group">
+    <div class="group-head" style="background:var(--grp-vendor);border-left:4px solid var(--grp-vendor-b);">
+      <div class="group-title">
+        <span class="group-label" style="color:var(--grp-vendor-b);">Vendor Area</span>
+        <span class="group-path">/vendor/** — RequireVendor · dashboard, listings, orders, reviews</span>
+      </div>
+      <div class="group-meta">
+        <span class="group-badge" style="color:var(--grp-vendor-b);border-color:var(--grp-vendor-b);background:#fff;">12 routes</span>
+      </div>
+    </div>
+    <div class="group-middleware">
+      <span class="mw-chip auth" style="color:#6a1b9a;border-color:#ce93d8;background:#faf5ff;">RequireVendor</span>
+      <span class="mw-chip rate">generalLimiter</span>
+      <span class="mw-chip time">publicTimeout (5s)</span>
+      <span class="mw-chip body">productBody (256 KiB) on POST/PUT products</span>
+    </div>
+    <table class="route-table">
+      <thead><tr><th width="52">Method</th><th width="230">Path</th><th width="160">Handler</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td colspan="4" style="padding:4px 10px;background:#f5f5f5;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Pages</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendor/fee</td><td class="handler-cell"><span class="handler-pkg">pagevendor.</span><span class="handler-fn">VendorBondPage</span></td><td class="desc-cell">Vendor bond / fee information</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendor/dashboard</td><td class="handler-cell"><span class="handler-pkg">pagevendor.</span><span class="handler-fn">VendorDashboardPage</span></td><td class="desc-cell">Vendor analytics dashboard</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendor/orders</td><td class="handler-cell"><span class="handler-pkg">pagevendor.</span><span class="handler-fn">VendorOrdersPage</span></td><td class="desc-cell">Incoming order queue</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendor/listings</td><td class="handler-cell"><span class="handler-pkg">pagevendor.</span><span class="handler-fn">VendorListingsPage</span></td><td class="desc-cell">Manage active listings</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendor/reviews</td><td class="handler-cell"><span class="handler-pkg">pagevendor.</span><span class="handler-fn">VendorReviewsPage</span></td><td class="desc-cell">Customer review management</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/vendor/reviews/<span class="path-param">{id}</span>/reply</td><td class="handler-cell"><span class="handler-pkg">pagevendor.</span><span class="handler-fn">VendorReviewReply</span></td><td class="desc-cell">Reply to a customer review</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/vendor/reviews/<span class="path-param">{id}</span>/flag</td><td class="handler-cell"><span class="handler-pkg">pagevendor.</span><span class="handler-fn">VendorReviewFlag</span></td><td class="desc-cell">Flag review for moderation</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/vendor/reviews/<span class="path-param">{id}</span>/unflag</td><td class="handler-cell"><span class="handler-pkg">pagevendor.</span><span class="handler-fn">VendorReviewUnflag</span></td><td class="desc-cell">Remove moderation flag</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendor/listings/new</td><td class="handler-cell"><span class="handler-pkg">pagevendor.</span><span class="handler-fn">VendorNewListingPage</span></td><td class="desc-cell">New listing form (GET)</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/vendor/listings/new</td><td class="handler-cell"><span class="handler-pkg">pagevendor.</span><span class="handler-fn">VendorNewListingPage</span></td><td class="desc-cell">New listing submit (POST)</td></tr>
+        <tr><td colspan="4" style="padding:4px 10px;background:#f5f5f5;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Vendor API</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/vendor/api/products</td><td class="handler-cell"><span class="handler-pkg">vendorproducts.</span><span class="handler-fn">Add</span></td><td class="desc-cell">Create listing <span class="mw-mini">productBody 256KiB</span></td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendor/api/products</td><td class="handler-cell"><span class="handler-pkg">vendorproducts.</span><span class="handler-fn">List</span></td><td class="desc-cell">List own products</td></tr>
+        <tr><td><span class="method method-PUT">PUT</span></td><td class="path-cell">/vendor/api/products/<span class="path-param">{id}</span></td><td class="handler-cell"><span class="handler-pkg">vendorproducts.</span><span class="handler-fn">Edit</span></td><td class="desc-cell">Update listing <span class="mw-mini">productBody 256KiB</span></td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/vendor/api/orders</td><td class="handler-cell"><span class="handler-pkg">vendororders.</span><span class="handler-fn">List</span></td><td class="desc-cell">Fetch incoming vendor orders</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-left">TESTX MARKETPLACE · INTERNAL DOCUMENTATION</div>
+    <div class="page-footer-center">routes/routes.go</div>
+    <div class="page-footer-right">Page 3 of 4</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE 4 — Admin + Wallet + Reset + Static + Summary
+════════════════════════════════════════════ -->
+<div class="page break-before">
+  <div class="page-hdr">
+    <div class="page-hdr-left">
+      <div class="page-hdr-logo">TEST<em>X</em></div>
+      <div class="page-hdr-title">Admin · Wallet · Reset · Static</div>
+    </div>
+    <div class="page-hdr-right">routes/routes.go<br>Page 4 of 4</div>
+  </div>
+
+  <!-- ADMIN -->
+  <div class="route-group">
+    <div class="group-head" style="background:var(--grp-admin);border-left:4px solid var(--grp-admin-b);">
+      <div class="group-title">
+        <span class="group-label" style="color:var(--grp-admin-b);">Admin Area</span>
+        <span class="group-path">/admin/** — RequireAdmin · back-office, platform KPIs, user management</span>
+      </div>
+      <div class="group-meta">
+        <span class="group-badge" style="color:var(--grp-admin-b);border-color:var(--grp-admin-b);background:#fff;">7 routes</span>
+      </div>
+    </div>
+    <div class="group-middleware">
+      <span class="mw-chip auth" style="color:#c2185b;border-color:#f48fb1;background:#fce4ec;">RequireAdmin (protected routes only)</span>
+      <span class="mw-chip rate">generalLimiter</span>
+    </div>
+    <table class="route-table">
+      <thead><tr><th width="52">Method</th><th width="200">Path</th><th width="160">Handler</th><th>Description</th><th width="80">Auth</th></tr></thead>
+      <tbody>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/admin/login</td><td class="handler-cell"><span class="handler-pkg">pageauthadmin.</span><span class="handler-fn">AdminLoginPage</span></td><td class="desc-cell">Admin login page</td><td class="auth-cell"><span class="auth-icon">—</span></td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/admin/login</td><td class="handler-cell"><span class="handler-pkg">authhandlers.</span><span class="handler-fn">AdminLogin</span></td><td class="desc-cell">Admin login action</td><td class="auth-cell"><span class="auth-icon">—</span></td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/admin/logout</td><td class="handler-cell"><span class="handler-pkg">authhandlers.</span><span class="handler-fn">Logout</span></td><td class="desc-cell">Admin logout</td><td class="auth-cell"><span class="auth-icon">—</span></td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/admin/dashboard</td><td class="handler-cell"><span class="handler-pkg">adminhandlers.</span><span class="handler-fn">Dashboard</span></td><td class="desc-cell">Platform KPI dashboard</td><td class="auth-cell" style="color:#c2185b;">🔒 Admin</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/admin/users</td><td class="handler-cell"><span class="handler-pkg">adminhandlers.</span><span class="handler-fn">Users</span></td><td class="desc-cell">User management</td><td class="auth-cell" style="color:#c2185b;">🔒 Admin</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/admin/orders</td><td class="handler-cell"><span class="handler-pkg">adminhandlers.</span><span class="handler-fn">Orders</span></td><td class="desc-cell">All-orders view</td><td class="auth-cell" style="color:#c2185b;">🔒 Admin</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/admin/security</td><td class="handler-cell"><span class="handler-pkg">pagebuyer.</span><span class="handler-fn">SecuritySettings</span></td><td class="desc-cell">Security settings (admin)</td><td class="auth-cell" style="color:#c2185b;">🔒 Admin</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WALLET -->
+  <div class="route-group">
+    <div class="group-head" style="background:var(--grp-wallet);border-left:4px solid var(--grp-wallet-b);">
+      <div class="group-title">
+        <span class="group-label" style="color:var(--grp-wallet-b);">Wallet</span>
+        <span class="group-path">/wallet/** — RequireBuyer · lazy-init, only mounted if DB pool available</span>
+      </div>
+      <div class="group-meta">
+        <span class="group-badge" style="color:var(--grp-wallet-b);border-color:var(--grp-wallet-b);background:#fff;">7 routes</span>
+      </div>
+    </div>
+    <div class="group-middleware">
+      <span class="mw-chip auth">RequireBuyer</span>
+      <span class="mw-chip" style="color:#00838f;border-color:#80cbc4;background:#e0f7fa;">Lazy Init — skipped if DB pool is nil</span>
+    </div>
+    <table class="route-table">
+      <thead><tr><th width="52">Method</th><th width="200">Path</th><th width="175">Handler</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/wallet/</td><td class="handler-cell"><span class="handler-pkg">walletHandler.</span><span class="handler-fn">WalletPage</span></td><td class="desc-cell">Wallet overview — balances, history</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/wallet/deposit/generate</td><td class="handler-cell"><span class="handler-pkg">walletHandler.</span><span class="handler-fn">GenerateDepositAddress</span></td><td class="desc-cell">Generate an on-chain deposit address</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/wallet/withdraw</td><td class="handler-cell"><span class="handler-pkg">walletHandler.</span><span class="handler-fn">CreateWithdrawal</span></td><td class="desc-cell">Initiate crypto withdrawal</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/wallet/transfer</td><td class="handler-cell"><span class="handler-pkg">walletHandler.</span><span class="handler-fn">CreateInternalTransfer</span></td><td class="desc-cell">Internal user-to-user transfer</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/wallet/transaction</td><td class="handler-cell"><span class="handler-pkg">walletHandler.</span><span class="handler-fn">TransactionDetails</span></td><td class="desc-cell">Single transaction detail</td></tr>
+        <tr><td><span class="method method-GET">GET</span></td><td class="path-cell">/wallet/export/csv</td><td class="handler-cell"><span class="handler-pkg">walletHandler.</span><span class="handler-fn">ExportTransactions</span></td><td class="desc-cell">Download transaction history as CSV</td></tr>
+        <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/wallet/refresh</td><td class="handler-cell"><span class="handler-pkg">walletHandler.</span><span class="handler-fn">RefreshRates</span></td><td class="desc-cell">Refresh live exchange rates</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PASSWORD RESET + STATIC -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+    <div class="route-group" style="margin-bottom:0;">
+      <div class="group-head" style="background:var(--grp-reset);border-left:4px solid var(--grp-reset-b);">
+        <div class="group-title">
+          <span class="group-label" style="color:var(--grp-reset-b);">Password Reset</span>
+        </div>
+        <span class="group-badge" style="color:var(--grp-reset-b);border-color:var(--grp-reset-b);background:#fff;">1 route</span>
+      </div>
+      <div class="group-middleware">
+        <span class="mw-chip rate">resetLimiter (5/min)</span>
+        <span class="mw-chip time">authTimeout (8s)</span>
+        <span class="mw-chip body">authBody (16KiB)</span>
+      </div>
+      <table class="route-table">
+        <thead><tr><th width="52">Method</th><th>Path</th><th>Handler</th></tr></thead>
+        <tbody>
+          <tr><td><span class="method method-POST">POST</span></td><td class="path-cell">/reset/password</td><td class="handler-cell"><span class="handler-pkg">resethandlers.</span><span class="handler-fn">ResetPassword</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="route-group" style="margin-bottom:0;">
+      <div class="group-head" style="background:#f5f5f5;border-left:4px solid #546e7a;">
+        <div class="group-title">
+          <span class="group-label" style="color:#546e7a;">Static Assets</span>
+        </div>
+        <span class="group-badge" style="color:#546e7a;border-color:#546e7a;background:#fff;">2 mounts</span>
+      </div>
+      <div class="group-middleware">
+        <span class="mw-chip" style="color:#546e7a;border-color:#b0bec5;">http.FileServer — serve from disk</span>
+      </div>
+      <table class="route-table">
+        <thead><tr><th>Mount</th><th>Disk Path</th></tr></thead>
+        <tbody>
+          <tr><td class="path-cell">/static/*</td><td class="handler-cell">./backend/frontend/static</td></tr>
+          <tr><td class="path-cell">/fonts/*</td><td class="handler-cell">./backend/frontend/fonts/</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ERROR HANDLERS -->
+  <div class="route-group">
+    <div class="group-head" style="background:#f5f5f5;border-left:4px solid #546e7a;">
+      <div class="group-title"><span class="group-label" style="color:#546e7a;">Custom Error Handlers</span></div>
+    </div>
+    <table class="route-table">
+      <thead><tr><th width="100">Trigger</th><th>Handler</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="handler-cell">404 NotFound</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">NotFoundPage</span></td><td class="desc-cell">Custom 404 page</td></tr>
+        <tr><td class="handler-cell">405 MethodNotAllowed</td><td class="handler-cell"><span class="handler-pkg">pagehandlers.</span><span class="handler-fn">ForbiddenPage</span></td><td class="desc-cell">Custom 403/405 page</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ROUTE SUMMARY -->
+  <div class="section-sep"><div class="section-sep-line"></div><div class="section-sep-label">Route Count Summary</div><div class="section-sep-line"></div></div>
+  <table class="config-table">
+    <thead><tr><th>Group</th><th>Prefix</th><th>Auth</th><th>Routes</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Public Pages</td><td class="mono-cell">/</td><td>None</td><td style="text-align:center;font-family:var(--mono);font-weight:700;">7</td><td>Login, register, terms, privacy, password reset</td></tr>
+      <tr><td>Auth Actions</td><td class="mono-cell">/login, /register, /logout</td><td>None</td><td style="text-align:center;font-family:var(--mono);font-weight:700;">5</td><td>Tightly rate-limited login endpoints</td></tr>
+      <tr><td>Public API</td><td class="mono-cell">/api</td><td>None</td><td style="text-align:center;font-family:var(--mono);font-weight:700;">2</td><td>Read-only, embeddable</td></tr>
+      <tr><td>Buyer Pages</td><td class="mono-cell">/</td><td>RequireBuyer</td><td style="text-align:center;font-family:var(--mono);font-weight:700;">13</td><td>Browse, cart, checkout, reviews</td></tr>
+      <tr><td>Buyer Dashboard</td><td class="mono-cell">/buyer</td><td>RequireBuyer</td><td style="text-align:center;font-family:var(--mono);font-weight:700;">5</td><td>Dashboard, orders, settings</td></tr>
+      <tr><td>Buyer API</td><td class="mono-cell">/buyer/api</td><td>RequireBuyer</td><td style="text-align:center;font-family:var(--mono);font-weight:700;">20</td><td>Settings, cart, messages, checkout</td></tr>
+      <tr><td>Vendor</td><td class="mono-cell">/vendor</td><td>RequireVendor</td><td style="text-align:center;font-family:var(--mono);font-weight:700;">15</td><td>Listings, orders, reviews, API</td></tr>
+      <tr><td>Admin</td><td class="mono-cell">/admin</td><td>RequireAdmin (partial)</td><td style="text-align:center;font-family:var(--mono);font-weight:700;">7</td><td>Login public; dashboard/users/orders protected</td></tr>
+      <tr><td>Wallet</td><td class="mono-cell">/wallet</td><td>RequireBuyer</td><td style="text-align:center;font-family:var(--mono);font-weight:700;">7</td><td>Lazy-init — only if DB pool available</td></tr>
+      <tr><td>Password Reset</td><td class="mono-cell">/reset</td><td>None</td><td style="text-align:center;font-family:var(--mono);font-weight:700;">1</td><td>Triple-guarded: rate + timeout + body</td></tr>
+      <tr style="background:#f0f7ff;font-weight:700;"><td colspan="3" style="font-family:var(--display);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);">Total</td><td style="text-align:center;font-family:var(--mono);font-weight:700;font-size:14px;color:var(--accent);">82</td><td style="font-family:var(--mono);font-size:10px;color:var(--text3);">Including static mounts and error handlers</td></tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <div class="page-footer-left">TESTX MARKETPLACE · INTERNAL DOCUMENTATION</div>
+    <div class="page-footer-center">routes/routes.go</div>
+    <div class="page-footer-right">Page 4 of 4</div>
+  </div>
+</div>
+
+</body>
+</html>
